@@ -1,11 +1,11 @@
 # PremierConnect AI
 
-> AI search visibility (AEO and GEO) and AI agent teams for oil and gas mineral and royalty companies. Founded by Demetri Panagiotou, Austin, Texas. Every engagement starts with a free expert audit.
+> AI search visibility (AEO and GEO) and AI agent teams for businesses, with deep roots in oil and gas, mineral and royalty work. Founded by Demetri Panagiotou, Austin, Texas. Every engagement starts with a free expert audit.
 
 ## Services
-- Expert AI audit (free): tests how ChatGPT, Gemini, Perplexity and Google AI Overviews answer the questions mineral sellers ask, reviews what AI can read about the company, and maps where AI agents can work 24/7. Written report included.
-- AEO and GEO: structured data, plain answers by basin and county, consistent listings, monthly re-testing.
-- AI agent teams: seller intake, follow-up, document chasing, pipeline updates. A person approves anything sent to an owner or partner.
+- Expert AI audit (free): tests how ChatGPT, Gemini, Perplexity and Google AI Overviews answer the questions your customers ask, reviews what AI can read about the company, and maps where AI agents can work 24/7. Written report included.
+- AEO and GEO: structured data, plain answers by market and location, consistent listings, monthly re-testing.
+- AI agent teams: customer intake, follow-up, document chasing, pipeline updates. A person approves anything sent to an owner or partner.
 
 ## Contact
 - Email: contact@premierconnectai.com
