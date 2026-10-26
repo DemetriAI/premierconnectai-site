@@ -38,7 +38,7 @@
   --body:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
 }
 *{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%}
+html{-webkit-text-size-adjust:100%;overflow-x:clip}
 html.lenis,html.lenis body{height:auto}
 .lenis.lenis-smooth{scroll-behavior:auto!important}
 body{margin:0;background:var(--paper);color:var(--ink);font:17px/1.6 var(--body);overflow-x:clip}
@@ -130,7 +130,13 @@ h1,h2,h3{font-family:var(--disp);letter-spacing:-.035em;line-height:.98;margin:0
   .hero .stage{grid-template-columns:1fr;align-content:start;padding-top:96px;gap:28px}
   .chat{justify-self:stretch}
   .thread{min-height:262px}
-  .chain{width:76px;height:76px;right:-4px;top:-44px}
+  .chain{width:70px;height:70px;right:2px;top:-40px}
+  .hero h1{font-size:clamp(34px,9.4vw,46px)}
+  .hero .eyebrow{font-size:11px;letter-spacing:.12em}
+  .thread{min-height:226px}
+  .anim .hero .copy{position:static}
+  .anim .hero-end{position:absolute;left:0;right:0;bottom:0;z-index:4;padding:56px var(--pad) max(26px,env(safe-area-inset-bottom));background:linear-gradient(transparent,rgba(7,9,15,.92) 34%)}
+  .anim .hero-end .sub{margin-top:0}
   .scrollhint{display:none}
 }
 
@@ -264,12 +270,14 @@ footer a{color:#cfd6e2}
     <div class="copy">
       <p class="eyebrow">AI search visibility and AI agent teams</p>
       <h1 id="h1">When customers ask <span class="ai">AI</span> who to call, it should say <span class="you">your name.</span></h1>
+      <div class="hero-end" id="heroEnd">
       <p class="sub" id="sub">People now ask ChatGPT, Google and Perplexity before they ever pick up the phone. PremierConnect AI gets your business named in those answers, then builds AI agents that take the busywork off your team.</p>
       <div class="cta-row" id="cta">
         <a class="btn magnet" href="https://foundusingai.premierconnectai.com/" target="_blank" rel="noopener">Book your free expert audit <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
         <a class="link-more" href="#how">See how it works</a>
       </div>
       <p class="fine">Free scan across ChatGPT, Claude, Gemini and Perplexity. Your report goes to your email.</p>
+      </div>
     </div>
 
     <figure class="chat" id="chat" aria-label="Example: an AI assistant answers a customer's question and names your business">
@@ -457,7 +465,7 @@ footer a{color:#cfd6e2}
     typed.textContent=p<.24?Q.slice(0,Math.round(Math.min(1,p/.22)*Q.length)):'';
     var moved=p>=.7;nA.textContent=moved?'2':'1';nB.textContent=moved?'3':'2';
   }
-  var tl=gsap.timeline({defaults:{ease:'none'},onUpdate:function(){heroText(tl.time());},scrollTrigger:{trigger:'#hero',start:'top top',end:'+=260%',scrub:.6,pin:'#hero .stage',anticipatePin:1}});
+  var tl=gsap.timeline({defaults:{ease:'none'},onUpdate:function(){heroText(tl.time());},scrollTrigger:{trigger:'#hero',start:'top top',end:'+=260%',scrub:.6,pin:'#hero .stage',anticipatePin:1,invalidateOnRefresh:true}});
   heroText(0);
   tl.to('.scrollhint',{autoAlpha:0,duration:.04},0)
     .fromTo('#qBubble',{autoAlpha:0,y:14},{autoAlpha:1,y:0,duration:.05,ease:'power2.out'},.24)
@@ -478,6 +486,7 @@ footer a{color:#cfd6e2}
     .to('#rYou',{autoAlpha:1,y:0,scale:1,duration:.08,ease:'back.out(2)'},.68)
     .to('#chat',{boxShadow:'0 40px 140px -20px rgba(254,157,71,.45), inset 0 1px 0 rgba(255,255,255,.08)',duration:.08},.68)
     // the story lands: copy and the call to action
+    .to('#chat',{autoAlpha:function(){return innerWidth<=900?.22:1},scale:function(){return innerWidth<=900?.94:1},duration:.08},.77)
     .to('#sub',{autoAlpha:1,y:0,duration:.08,ease:'power2.out'},.8)
     .to('#cta',{autoAlpha:1,y:0,duration:.08,ease:'power2.out'},.85)
     .to('.hero .fine',{autoAlpha:1,y:0,duration:.08,ease:'power2.out'},.88)
