@@ -96,7 +96,7 @@ h1,h2,h3{font-family:var(--disp);letter-spacing:-.035em;line-height:.98;margin:0
 @keyframes wheel{0%{transform:translateY(0);opacity:1}80%{transform:translateY(12px);opacity:0}100%{opacity:0}}
 
 /* chat */
-.chat{position:relative;z-index:2;width:min(520px,100%);justify-self:center;background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.035));border:1px solid rgba(255,255,255,.12);border-radius:26px;padding:18px;box-shadow:0 40px 120px -30px rgba(0,0,0,.8),inset 0 1px 0 rgba(255,255,255,.08);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.chat{margin:0;position:relative;z-index:2;width:min(520px,100%);justify-self:center;background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.035));border:1px solid rgba(255,255,255,.12);border-radius:26px;padding:18px;box-shadow:0 40px 120px -30px rgba(0,0,0,.8),inset 0 1px 0 rgba(255,255,255,.08);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
 .chat .bar{display:flex;align-items:center;gap:8px;padding:2px 4px 14px;color:#8c97a8;font:600 12px/1 var(--body);letter-spacing:.06em}
 .chat .bar b{width:9px;height:9px;border-radius:50%;background:#3a4252}
 .chat .bar b:first-child{background:#ff6b5f}.chat .bar b:nth-child(2){background:#ffbd2e}.chat .bar b:nth-child(3){background:#28c840}
@@ -133,7 +133,13 @@ h1,h2,h3{font-family:var(--disp);letter-spacing:-.035em;line-height:.98;margin:0
   .chain{width:70px;height:70px;right:2px;top:-40px}
   .hero h1{font-size:clamp(34px,9.4vw,46px)}
   .hero .eyebrow{font-size:11px;letter-spacing:.12em}
-  .thread{min-height:226px}
+  .thread{min-height:200px;gap:9px}
+  .chat{padding:14px;border-radius:22px}
+  .chat .bar{padding-bottom:10px}
+  .q{font-size:14px;padding:10px 13px}
+  .row{padding:9px 12px}
+  .inp{margin-top:10px;min-height:44px;padding:8px 8px 8px 14px}
+  .hero .stage{gap:18px;padding-top:88px}
   .anim .hero .copy{position:static}
   .anim .hero-end{position:absolute;left:0;right:0;bottom:0;z-index:4;padding:56px var(--pad) max(26px,env(safe-area-inset-bottom));background:linear-gradient(transparent,rgba(7,9,15,.92) 34%)}
   .anim .hero-end .sub{margin-top:0}
