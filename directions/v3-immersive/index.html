@@ -113,7 +113,8 @@ h1,h2,h3{font-family:var(--disp);letter-spacing:-.035em;line-height:.98;margin:0
 .row{position:relative;display:flex;align-items:center;gap:12px;padding:12px 14px;border-radius:14px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);font-weight:600;color:#e7ebf2}
 .row .n{width:26px;height:26px;border-radius:8px;display:grid;place-items:center;background:rgba(255,255,255,.08);font-size:13px;flex:none}
 .row .ln{flex:1;height:6px;border-radius:4px;background:rgba(255,255,255,.08)}
-.row.you{position:absolute;inset:0 0 auto 0;background:linear-gradient(90deg,rgba(254,157,71,.22),rgba(254,157,71,.08));border-color:rgba(254,157,71,.75);box-shadow:0 0 0 1px rgba(254,157,71,.35),0 18px 50px -12px rgba(254,157,71,.55);color:#fff}
+.row.c-only{display:none}.anim .row.c-only{display:flex}.anim .row.you{position:absolute;inset:0 0 auto 0}
+.row.you{background:linear-gradient(90deg,rgba(254,157,71,.22),rgba(254,157,71,.08));border-color:rgba(254,157,71,.75);box-shadow:0 0 0 1px rgba(254,157,71,.35),0 18px 50px -12px rgba(254,157,71,.55);color:#fff}
 .row.you .n{background:var(--orange);color:#14100b}
 .tag{font:600 11px/1 var(--body);padding:6px 9px;border-radius:999px;background:var(--blue);color:#001523;white-space:nowrap}
 .inp{margin-top:14px;display:flex;align-items:center;gap:10px;border-radius:16px;background:rgba(0,0,0,.35);border:1px solid rgba(255,255,255,.1);padding:12px 12px 12px 16px;font-size:15px;color:#e7ebf2;min-height:50px}
@@ -285,10 +286,10 @@ footer a{color:#cfd6e2}
         <div class="ans" id="ans">
           <p id="ansLine">Here are a few businesses people recommend:</p>
           <div class="rows" id="rows">
-            <div class="row" id="rA"><span class="n">1</span>Business A<span class="ln"></span></div>
-            <div class="row" id="rB"><span class="n">2</span>Business B<span class="ln"></span></div>
-            <div class="row" id="rC"><span class="n">3</span>Business C<span class="ln"></span></div>
             <div class="row you" id="rYou"><span class="n">1</span>Your business<span class="ln" style="opacity:0"></span><span class="tag">Named in the answer</span></div>
+            <div class="row" id="rA"><span class="n">2</span>Business A<span class="ln"></span></div>
+            <div class="row" id="rB"><span class="n">3</span>Business B<span class="ln"></span></div>
+            <div class="row c-only" id="rC"><span class="n">3</span>Business C<span class="ln"></span></div>
           </div>
         </div>
       </div>
@@ -417,7 +418,8 @@ footer a{color:#cfd6e2}
 <script>
 (function(){
   var html=document.documentElement;
-  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  // ?motion=1 forces motion for testing on machines with animations switched off
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches&&!/[?&]motion=1/.test(location.search);
   var top=document.getElementById('top');
   var heroEl=document.getElementById('hero');
   // header: light treatment once the dark hero is behind us (works with or without motion)
@@ -427,6 +429,7 @@ footer a{color:#cfd6e2}
 
   if(reduce||!window.gsap||!window.ScrollTrigger){html.classList.add('rm');document.getElementById('typed').textContent='';return;}
   gsap.registerPlugin(ScrollTrigger);
+  html.classList.add('anim');
 
   // smooth, weighted scrolling on desktop; native momentum on touch
   var lenis=new Lenis({lerp:.085,wheelMultiplier:.9});
@@ -455,6 +458,7 @@ footer a{color:#cfd6e2}
     var moved=p>=.7;nA.textContent=moved?'2':'1';nB.textContent=moved?'3':'2';
   }
   var tl=gsap.timeline({defaults:{ease:'none'},onUpdate:function(){heroText(tl.progress());},scrollTrigger:{trigger:'#hero',start:'top top',end:'+=260%',scrub:.6,pin:'#hero .stage',anticipatePin:1}});
+  heroText(0);
   tl.to('.scrollhint',{autoAlpha:0,duration:.04},0)
     .fromTo('#qBubble',{autoAlpha:0,y:14},{autoAlpha:1,y:0,duration:.05,ease:'power2.out'},.24)
     .to('#think',{autoAlpha:1,duration:.03},.27).to('#think',{autoAlpha:0,duration:.03},.34)
