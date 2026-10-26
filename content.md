@@ -20,7 +20,7 @@ Sub: People now ask ChatGPT, Google and Perplexity before they ever pick up the 
 Primary button: Book your free expert audit
 Secondary link: See how it works
 
-Small print under the buttons: 60 minutes on Google Meet. You get a written report either way.
+Small print under the buttons: Free scan across ChatGPT, Claude, Gemini and Perplexity. Your report goes to your email.
 
 ## Section 1: AI search
 Eyebrow: AEO and GEO
@@ -85,11 +85,14 @@ Body: Book a call. We run the test, you keep the report. Based in Austin, Texas,
 
 Button: Book your free expert audit
 
+Under the button: Prefer to talk first? Book a 60-minute call.
+
 ## Footer
 PremierConnect AI · Austin, Texas · contact@premierconnectai.com
 Links: Privacy Policy · Terms & Conditions
 (c) 2026 PremierConnect AI
 
 ## Links
-- Every book button: https://calendar.app.google/CBG9o7r99zyKZ2Dj9
+- Every "Book your free expert audit" button: https://foundusingai.premierconnectai.com/ (the free FoundusingAI scan, Demetri 2026-10-26)
+- Closing line "Prefer to talk first? Book a 60-minute call.": https://calendar.app.google/CBG9o7r99zyKZ2Dj9
 - Email: contact@premierconnectai.com
