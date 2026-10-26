@@ -492,7 +492,7 @@ footer a{color:#cfd6e2}
     .to('#rYou',{autoAlpha:1,y:0,scale:1,duration:.08,ease:'back.out(2)'},.68)
     .to('#chat',{boxShadow:'0 40px 140px -20px rgba(254,157,71,.45), inset 0 1px 0 rgba(255,255,255,.08)',duration:.08},.68)
     // the story lands: copy and the call to action
-    .to('#chat',{autoAlpha:function(){return innerWidth<=900?.22:1},scale:function(){return innerWidth<=900?.94:1},duration:.08},.77)
+    .to('#chat',{autoAlpha:function(){return innerWidth<=900?0:1},y:function(){return innerWidth<=900?-30:0},scale:function(){return innerWidth<=900?.94:1},duration:.08},.77)
     .to('#sub',{autoAlpha:1,y:0,duration:.08,ease:'power2.out'},.8)
     .to('#cta',{autoAlpha:1,y:0,duration:.08,ease:'power2.out'},.85)
     .to('.hero .fine',{autoAlpha:1,y:0,duration:.08,ease:'power2.out'},.88)
