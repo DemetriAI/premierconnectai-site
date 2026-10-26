@@ -1,0 +1,512 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>AI Search Visibility and AI Agent Teams | PremierConnect AI</title>
+<meta name="description" content="People now ask ChatGPT, Google and Perplexity before they pick up the phone. PremierConnect AI gets your business named in those answers, then builds AI agents that take the busywork off your team.">
+<link rel="canonical" href="https://premierconnectai.com/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="PremierConnect AI">
+<meta property="og:title" content="When customers ask AI who to call, it should say your name.">
+<meta property="og:description" content="PremierConnect AI gets your business named in AI answers, then builds AI agents that take the busywork off your team.">
+<meta property="og:url" content="https://premierconnectai.com/">
+<meta property="og:image" content="https://premierconnectai.com/assets/logo.png">
+<meta name="twitter:card" content="summary">
+<meta name="theme-color" content="#ffffff">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add('js')</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"Organization","@id":"https://premierconnectai.com/#org","name":"PremierConnect AI","url":"https://premierconnectai.com/","email":"contact@premierconnectai.com","logo":"https://premierconnectai.com/assets/logo.png","founder":{"@type":"Person","name":"Demetri Panagiotou"},"address":{"@type":"PostalAddress","addressLocality":"Austin","addressRegion":"Texas","addressCountry":"US"}},
+{"@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"What is AEO?","acceptedAnswer":{"@type":"Answer","text":"Answer Engine Optimization. It is the work of getting your business named when someone asks an AI assistant a direct question, like who to hire for a job in their area. Search used to return ten links. AI returns one answer with a few names in it."}},
+{"@type":"Question","name":"What is GEO?","acceptedAnswer":{"@type":"Answer","text":"Generative Engine Optimization. The same goal applied to tools that write answers, like ChatGPT, Gemini, Perplexity and Google AI Overviews. These tools pick businesses whose information is clear, consistent and backed by other sources."}},
+{"@type":"Question","name":"How is this different from SEO?","acceptedAnswer":{"@type":"Answer","text":"SEO aims for a spot in a list of links. AEO and GEO aim for a mention inside the answer itself. Good SEO helps, but AI tools also weigh structured data, plain answers to specific questions, and what other sites say about you."}},
+{"@type":"Question","name":"What does the free audit include?","acceptedAnswer":{"@type":"Answer","text":"We ask the major AI assistants the questions your customers ask, and record who gets named. We review your site and listings for what AI can and cannot read. We sit down with you on your main goals and map where AI agents could work 24/7. You get a written report either way."}},
+{"@type":"Question","name":"Do AI agents replace my staff?","acceptedAnswer":{"@type":"Answer","text":"No. Agents take the repetitive work: intake, follow-up, scheduling, updating records. Your people keep the relationships and the decisions. Nothing goes out to a customer without a person approving it."}},
+{"@type":"Question","name":"How long until we show up in AI answers?","acceptedAnswer":{"@type":"Answer","text":"It depends on your market and how much is already published about you. The audit gives you a baseline, and we re-test the same questions every month so you can see the change yourself."}}
+]}
+]}
+</script>
+<style>
+:root{
+  --ink:#0B0D12;--ink-2:#353B47;--muted:#5A6170;--line:#E5E7EC;--line-2:#EEF0F3;
+  --bg:#fff;--soft:#F6F7F9;
+  --orange:#FE9D47;--orange-hi:#FF8C2B;--orange-ink:#A3520A;--orange-tint:#FFF4EA;
+  --blue:#02A6FE;--blue-ink:#006FAD;--blue-tint:#EAF7FF;
+  --display:"Bricolage Grotesque",ui-sans-serif,system-ui,sans-serif;
+  --sans:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  --r:20px;--max:1180px;--gut:24px;
+  --shadow:0 1px 2px rgba(11,13,18,.04),0 8px 24px -6px rgba(11,13,18,.08),0 32px 64px -24px rgba(11,13,18,.14);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.6 var(--sans);-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img,svg{display:block;max-width:100%}
+a{color:inherit}
+h1,h2,h3{font-family:var(--display);font-weight:700;letter-spacing:-.025em;line-height:1.05;margin:0}
+p{margin:0}
+:focus-visible{outline:3px solid var(--blue-ink);outline-offset:3px;border-radius:6px}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 var(--gut)}
+.skip{position:absolute;left:-999px;top:8px;background:var(--ink);color:#fff;padding:10px 14px;border-radius:10px;z-index:100}
+.skip:focus{left:8px}
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font:600 13px/1 var(--sans);letter-spacing:.08em;text-transform:uppercase;color:var(--orange-ink)}
+.eyebrow::before{content:"";width:18px;height:2px;border-radius:2px;background:var(--orange)}
+.eyebrow.blue{color:var(--blue-ink)}.eyebrow.blue::before{background:var(--blue)}
+
+/* buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:48px;padding:0 22px;border-radius:999px;font:600 16px/1 var(--sans);text-decoration:none;transition:transform .2s,background-color .2s,box-shadow .2s;white-space:nowrap}
+.btn svg{width:18px;height:18px;transition:transform .2s}
+.btn:hover svg{transform:translateX(3px)}
+.btn-primary{background:var(--orange);color:#1A0E02;box-shadow:0 1px 0 rgba(255,255,255,.4) inset,0 8px 20px -8px rgba(254,157,71,.9)}
+.btn-primary:hover{background:var(--orange-hi);transform:translateY(-1px)}
+.btn-dark{background:var(--ink);color:#fff;min-height:42px;padding:0 18px;font-size:15px}
+.btn-dark:hover{background:#262a33}
+.link{display:inline-flex;align-items:center;gap:8px;font-weight:600;color:var(--ink);text-decoration:none;min-height:48px;padding:0 4px}
+.link span{border-bottom:2px solid var(--line);transition:border-color .2s}
+.link:hover span{border-color:var(--blue)}
+
+/* header */
+.top{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.86);-webkit-backdrop-filter:saturate(1.6) blur(14px);backdrop-filter:saturate(1.6) blur(14px);border-bottom:1px solid var(--line-2)}
+.top .wrap{display:flex;align-items:center;gap:28px;height:72px}
+.logo{display:block;flex:none}
+.logo img{width:222px;height:auto}
+.nav{display:flex;gap:4px;margin-left:auto}
+.nav a{font:500 15px/1 var(--sans);color:var(--ink-2);text-decoration:none;padding:10px 12px;border-radius:999px;transition:background-color .2s,color .2s}
+.nav a:hover{background:var(--soft);color:var(--ink)}
+
+/* hero */
+.hero{position:relative;overflow:hidden;padding:88px 0 104px}
+.hero::before{content:"";position:absolute;inset:0;background:
+  radial-gradient(560px 380px at 82% 30%,rgba(2,166,254,.10),transparent 70%),
+  radial-gradient(520px 360px at 62% 78%,rgba(254,157,71,.13),transparent 70%);pointer-events:none}
+.hero::after{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(11,13,18,.07) 1px,transparent 1px);background-size:22px 22px;-webkit-mask-image:linear-gradient(180deg,#000,transparent 85%);mask-image:linear-gradient(180deg,#000,transparent 85%);pointer-events:none;opacity:.6}
+.hero .wrap{position:relative;z-index:1;display:grid;grid-template-columns:minmax(0,1.04fr) minmax(0,.96fr);gap:64px;align-items:center}
+.hero h1{font-size:clamp(2.45rem,5.1vw,4.3rem);margin:22px 0 24px;font-weight:800;letter-spacing:-.035em}
+.hero h1 em{font-style:normal;background:linear-gradient(transparent 62%,rgba(254,157,71,.42) 62%,rgba(254,157,71,.42) 92%,transparent 92%)}
+.sub{font-size:clamp(1.05rem,1.4vw,1.2rem);color:var(--ink-2);max-width:34rem}
+.ctas{display:flex;flex-wrap:wrap;align-items:center;gap:12px 20px;margin-top:34px}
+.fine{margin-top:16px;font-size:14px;color:var(--muted);display:flex;gap:8px;align-items:flex-start}
+.fine svg{width:16px;height:16px;flex:none;color:var(--blue-ink);margin-top:2px}
+
+/* demo card */
+.stage{position:relative}
+.stage::before{content:"";position:absolute;inset:8% -4% -6% 6%;border-radius:32px;background:linear-gradient(135deg,rgba(2,166,254,.16),rgba(254,157,71,.18));filter:blur(40px);z-index:0}
+.demo{position:relative;z-index:1;background:#fff;border:1px solid var(--line);border-radius:24px;box-shadow:var(--shadow);overflow:hidden;max-width:540px;margin-left:auto}
+.d-head{display:flex;align-items:center;gap:12px;padding:16px 64px 16px 20px;border-bottom:1px solid var(--line-2);background:linear-gradient(#fff,#FBFBFC)}
+.spark{width:32px;height:32px;border-radius:10px;display:grid;place-items:center;background:var(--ink);color:#fff;flex:none}
+.spark svg{width:18px;height:18px}
+.hbars{display:grid;gap:6px;flex:1}
+.hbars i{display:block;height:7px;border-radius:7px;background:var(--line)}
+.hbars i:first-child{width:46%;background:#D6D9DF}.hbars i:last-child{width:28%}
+.d-body{padding:22px 20px 8px;display:grid;gap:18px}
+.q{justify-self:end;max-width:86%;background:var(--ink);color:#fff;font-size:15px;line-height:1.45;padding:11px 16px;border-radius:18px 18px 6px 18px}
+.answer{position:relative;display:grid;gap:14px}
+.intro{display:grid;gap:8px;padding-left:2px}
+.sk{display:block;height:8px;border-radius:8px;background:#E3E6EB;transform-origin:left center}
+.intro .sk:nth-child(1){width:94%}.intro .sk:nth-child(2){width:68%}
+.think{position:absolute;left:2px;top:0;display:flex;gap:5px;opacity:0}
+.think i{width:7px;height:7px;border-radius:50%;background:#A9AFBA}
+.rows{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.row{position:relative;display:flex;gap:12px;align-items:flex-start;padding:13px 14px;border-radius:14px;border:1px solid var(--line-2);background:#fff;--hl:1}
+.row::before{content:"";position:absolute;inset:-1px;border-radius:14px;border:1.5px solid var(--orange);background:var(--orange-tint);box-shadow:0 10px 28px -12px rgba(254,157,71,.7);opacity:0;z-index:0}
+.row.you::before{opacity:var(--hl)}
+.row>*{position:relative;z-index:1}
+.n{flex:none;width:28px;height:28px;border-radius:9px;display:grid;place-items:center;font:700 13px/1 var(--sans);background:var(--soft);color:var(--ink-2)}
+.row.you .n{background:var(--orange);color:#1A0E02}
+.rb{flex:1;min-width:0;display:grid;gap:8px;padding-top:4px}
+.rn{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px}
+.rn b{font:600 15px/1.2 var(--sans)}
+.row .sk{width:82%;height:7px}
+.row:nth-child(2) .sk{width:70%}.row.you .sk{width:88%;background:#F4D9BF}
+.tag{display:inline-flex;align-items:center;gap:6px;background:var(--blue);color:#04121C;font:600 12px/1 var(--sans);padding:6px 9px;border-radius:999px;transform-origin:left center}
+.tag svg{width:12px;height:12px}
+.d-input{display:flex;align-items:center;gap:10px;margin:14px 14px 14px;padding:8px 8px 8px 16px;border:1px solid var(--line);border-radius:16px;background:var(--soft);min-height:52px}
+.typed{font-size:15px;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:clip;min-width:0}
+.caret{flex:none;width:2px;height:20px;background:var(--blue);border-radius:2px;margin-left:-8px}
+.send{margin-left:auto;flex:none;width:36px;height:36px;border-radius:11px;display:grid;place-items:center;background:#D9DCE2;color:#fff;transition:background-color .25s}
+.send.on{background:var(--ink)}
+.send svg{width:16px;height:16px}
+.toggle{position:absolute;z-index:2;top:14px;right:14px;width:36px;height:36px;border-radius:10px;border:1px solid var(--line);background:#fff;color:var(--ink-2);display:grid;place-items:center;cursor:pointer;padding:0}
+.toggle:hover{background:var(--soft)}
+.toggle svg{width:14px;height:14px}
+.toggle .i-play,.toggle[aria-pressed="true"] .i-pause{display:none}
+.toggle[aria-pressed="true"] .i-play{display:block}
+.stage .toggle{right:14px}
+@media (prefers-reduced-motion:reduce){.toggle{display:none}html{scroll-behavior:auto}}
+
+/* sections */
+section{scroll-margin-top:84px}
+.sec{padding:112px 0}
+.soft{background:var(--soft);border-top:1px solid var(--line-2);border-bottom:1px solid var(--line-2)}
+.h2{font-size:clamp(2rem,3.9vw,3.25rem);margin:18px 0 20px}
+.lede{font-size:1.125rem;color:var(--ink-2);max-width:36rem}
+.split{display:grid;grid-template-columns:minmax(0,.92fr) minmax(0,1.08fr);gap:72px;align-items:start}
+.h2 .dim{color:#9AA0AB}
+.ten{margin-top:40px;width:100%;max-width:300px;height:auto}
+.panels{display:grid;gap:20px}
+.panel{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:28px}
+.panel h3{font:600 15px/1.3 var(--sans);letter-spacing:0;color:var(--muted);margin-bottom:18px}
+.qs{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.qs li{display:flex;gap:12px;align-items:flex-start;background:var(--soft);border:1px solid var(--line-2);border-radius:14px 14px 14px 4px;padding:13px 16px;font-weight:500;color:var(--ink)}
+.qs svg{width:18px;height:18px;flex:none;margin-top:3px;color:var(--blue-ink)}
+.does{list-style:none;margin:0;padding:0;display:grid;gap:14px;counter-reset:d}
+.does li{display:flex;gap:14px;align-items:flex-start;color:var(--ink-2)}
+.does li::before{counter-increment:d;content:counter(d);flex:none;width:26px;height:26px;border-radius:8px;display:grid;place-items:center;background:var(--orange-tint);color:var(--orange-ink);font:700 13px/1 var(--sans);margin-top:1px}
+
+.head{max-width:44rem}
+.agents{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px;margin-top:56px}
+.card{background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:30px;transition:box-shadow .3s,transform .3s}
+.card:hover{box-shadow:var(--shadow)}
+.ic{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;background:var(--blue-tint);color:var(--blue-ink);margin-bottom:22px}
+.card:nth-child(even) .ic{background:var(--orange-tint);color:var(--orange-ink)}
+.ic svg{width:24px;height:24px;fill:none;stroke:currentColor;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}
+.card h3{font-size:1.4rem;letter-spacing:-.015em;margin-bottom:10px}
+.card p{color:var(--ink-2)}
+.js .agents.pre .card{opacity:0;transform:translateY(20px)}
+.js .agents.pre .ic path{stroke-dasharray:1;stroke-dashoffset:1}
+.js .agents.pre.in .card{opacity:1;transform:none;transition:opacity .7s cubic-bezier(.2,.7,.2,1) calc(var(--i)*110ms),transform .7s cubic-bezier(.2,.7,.2,1) calc(var(--i)*110ms),box-shadow .3s}
+.js .agents.pre.in .ic path{stroke-dashoffset:0;transition:stroke-dashoffset 1.2s cubic-bezier(.4,0,.2,1) calc(var(--i)*110ms + 250ms)}
+@media (prefers-reduced-motion:reduce){.js .agents.pre .card{opacity:1;transform:none}.js .agents.pre .ic path{stroke-dashoffset:0}}
+.quote{margin:72px 0 0;padding:8px 0 8px 32px;border-left:4px solid var(--orange);max-width:56rem}
+.quote blockquote{margin:0;font:700 clamp(1.6rem,3.2vw,2.6rem)/1.15 var(--display);letter-spacing:-.025em}
+.quote figcaption{margin-top:18px;color:var(--muted);font-size:15px}
+.quote figcaption b{color:var(--ink);font-weight:600}
+
+.steps{list-style:none;margin:56px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;counter-reset:s;position:relative}
+.step{position:relative;background:#fff;border:1px solid var(--line);border-radius:var(--r);padding:30px}
+.step::before{counter-increment:s;content:"0" counter(s);display:block;font:800 3rem/1 var(--display);letter-spacing:-.04em;color:transparent;-webkit-text-stroke:1.5px #C9CDD5;margin-bottom:22px}
+.step:first-child::before{-webkit-text-stroke-color:var(--orange)}
+.step h3{font-size:1.3rem;letter-spacing:-.015em;margin-bottom:10px}
+.step p{color:var(--ink-2)}
+
+.faq{display:grid;grid-template-columns:minmax(0,.7fr) minmax(0,1.3fr);gap:72px;align-items:start}
+.faq .h2{margin-top:0}
+.qa{border-top:1px solid var(--line)}
+details{border-bottom:1px solid var(--line)}
+summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:20px;padding:24px 4px;font:600 1.125rem/1.35 var(--sans)}
+summary::-webkit-details-marker{display:none}
+summary .pm{flex:none;width:32px;height:32px;border-radius:50%;border:1px solid var(--line);display:grid;place-items:center;transition:transform .25s,background-color .25s,border-color .25s}
+summary .pm svg{width:14px;height:14px}
+details[open] summary .pm{transform:rotate(45deg);background:var(--orange);border-color:var(--orange)}
+summary:hover .pm{border-color:var(--ink)}
+details p{padding:0 56px 26px 4px;color:var(--ink-2)}
+
+.close{padding:96px 0 112px}
+.cta{position:relative;overflow:hidden;background:var(--ink);color:#fff;border-radius:32px;padding:88px 64px;display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,.7fr);gap:40px;align-items:end}
+.cta::before{content:"";position:absolute;inset:0;background:radial-gradient(480px 300px at 92% 0%,rgba(2,166,254,.32),transparent 70%),radial-gradient(420px 300px at 70% 120%,rgba(254,157,71,.30),transparent 70%);pointer-events:none}
+.cta>*{position:relative}
+.cta h2{font-size:clamp(2.1rem,4.4vw,3.6rem);font-weight:800}
+.cta p{margin-top:20px;color:#C7CBD4;font-size:1.125rem;max-width:32rem}
+.cta .btn{justify-self:end}
+
+footer{border-top:1px solid var(--line);padding:40px 0 48px;font-size:15px;color:var(--muted)}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px 32px;align-items:center}
+footer a{color:var(--ink-2);text-decoration:none}
+footer a:hover{color:var(--ink);text-decoration:underline}
+.flinks{display:flex;gap:20px}
+.copy{flex-basis:100%;font-size:14px}
+
+@media (max-width:1020px){
+  .hero .wrap,.split,.faq{grid-template-columns:minmax(0,1fr);gap:48px}
+  .demo{margin:0 auto}
+  .nav a{padding:10px 8px}
+  .steps{grid-template-columns:1fr}
+  .cta{grid-template-columns:minmax(0,1fr);padding:64px 40px}
+  .cta .btn{justify-self:start}
+}
+@media (max-width:860px){
+  .top .wrap{flex-wrap:wrap;height:auto;padding-top:12px;padding-bottom:6px;gap:8px 12px}
+  .top .btn-dark{margin-left:auto}
+  .nav{order:3;width:100%;margin:0 0 0 -8px;gap:0}
+}
+@media (max-width:640px){
+  :root{--gut:16px}
+  body{font-size:16px}
+  .logo img{width:168px}
+  .top .btn-dark{min-height:40px;padding:0 14px;font-size:14px}
+  .nav a{font-size:14px;padding:10px 8px}
+  .hero{padding:48px 0 72px}
+  .sec{padding:76px 0}
+  .agents{grid-template-columns:1fr;margin-top:40px}
+  .panel,.card,.step{padding:24px}
+  .quote{padding-left:20px;margin-top:56px}
+  .d-body{padding:18px 14px 6px}
+  .d-input{margin:12px 10px 10px}
+  .q,.typed{font-size:14px}
+  .close{padding:56px 0 72px}
+  .cta{padding:48px 24px;border-radius:24px}
+  .ctas .btn{width:100%}
+  details p{padding-right:8px}
+  summary{font-size:1.05rem}
+}
+@media (max-width:380px){
+  .logo img{width:150px}
+  .top .btn-dark{padding:0 12px;font-size:13.5px}
+  .nav a{padding:10px 6px;font-size:13.5px}
+}
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="top">
+  <div class="wrap">
+    <a class="logo" href="#top" aria-label="PremierConnect AI home"><img src="../../assets/logo.png" width="333" height="45" alt="PremierConnect AI"></a>
+    <nav class="nav" aria-label="Main">
+      <a href="#ai-search">AI search</a>
+      <a href="#ai-agents">AI agents</a>
+      <a href="#how">How it works</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+    <a class="btn btn-dark" href="https://calendar.app.google/CBG9o7r99zyKZ2Dj9" target="_blank" rel="noopener">Book a free audit</a>
+  </div>
+</header>
+
+<main id="main">
+<section class="hero" id="top" aria-labelledby="hero-h">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow">AI search visibility and AI agent teams</span>
+      <h1 id="hero-h">When customers ask AI who to call, it should say <em>your name.</em></h1>
+      <p class="sub">People now ask ChatGPT, Google and Perplexity before they ever pick up the phone. PremierConnect AI gets your business named in those answers, then builds AI agents that take the busywork off your team.</p>
+      <div class="ctas">
+        <a class="btn btn-primary" href="https://calendar.app.google/CBG9o7r99zyKZ2Dj9" target="_blank" rel="noopener">Book your free expert audit <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10h12M11 5l5 5-5 5"/></svg></a>
+        <a class="link" href="#how"><span>See how it works</span><svg width="16" height="16" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M10 4v12M5 11l5 5 5-5"/></svg></a>
+      </div>
+      <p class="fine"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="10" cy="10" r="7.5"/><path d="M10 6v4l2.5 2"/></svg>60 minutes on Google Meet. You get a written report either way.</p>
+    </div>
+
+    <div class="stage">
+      <div class="demo" role="img" aria-label="Illustration: a customer asks an AI assistant who is the most reliable company near them. The answer names three businesses, and the third, Your business, is highlighted as named in the answer.">
+        <div class="d-head" aria-hidden="true">
+          <span class="spark"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.5l1.9 5.6 5.6 1.9-5.6 1.9L12 17.5l-1.9-5.6L4.5 10l5.6-1.9z"/><path d="M18.5 15l.8 2.2 2.2.8-2.2.8-.8 2.2-.8-2.2-2.2-.8 2.2-.8z" opacity=".7"/></svg></span>
+          <span class="hbars"><i></i><i></i></span>
+        </div>
+        <div class="d-body" id="d-body" aria-hidden="true">
+          <div class="q" id="d-q">Who is the most reliable company for this near me?</div>
+          <div class="answer">
+            <div class="think" id="d-think"><i></i><i></i><i></i></div>
+            <div class="intro" id="d-intro"><span class="sk"></span><span class="sk"></span></div>
+            <ol class="rows">
+              <li class="row" id="d-r1"><span class="n">1</span><div class="rb"><span class="rn"><b>Business A</b></span><span class="sk"></span></div></li>
+              <li class="row" id="d-r2"><span class="n">2</span><div class="rb"><span class="rn"><b>Business B</b></span><span class="sk"></span></div></li>
+              <li class="row you" id="d-r3"><span class="n">3</span><div class="rb"><span class="rn"><b>Your business</b><span class="tag" id="d-tag"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2.5 6.2l2.2 2.2 4.8-4.9"/></svg>Named in the answer</span></span><span class="sk"></span></div></li>
+            </ol>
+          </div>
+        </div>
+        <div class="d-input" aria-hidden="true">
+          <span class="typed" id="d-typed"></span><span class="caret" id="d-caret"></span>
+          <span class="send" id="d-send"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 13V3M3.5 7.5L8 3l4.5 4.5"/></svg></span>
+        </div>
+      </div>
+      <button class="toggle" id="d-toggle" type="button" aria-pressed="false" aria-label="Pause animation">
+        <svg class="i-pause" viewBox="0 0 14 14" fill="currentColor" aria-hidden="true"><rect x="2.5" y="2" width="3" height="10" rx="1"/><rect x="8.5" y="2" width="3" height="10" rx="1"/></svg>
+        <svg class="i-play" viewBox="0 0 14 14" fill="currentColor" aria-hidden="true"><path d="M3.5 2.2v9.6a.6.6 0 0 0 .9.5l7.6-4.8a.6.6 0 0 0 0-1L4.4 1.7a.6.6 0 0 0-.9.5z"/></svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="ai-search" aria-labelledby="s1-h">
+  <div class="wrap split">
+    <div>
+      <span class="eyebrow blue">AEO and GEO</span>
+      <h2 class="h2" id="s1-h"><span class="dim">Search gave ten links.</span> AI gives one answer.</h2>
+      <p class="lede">When someone asks an AI assistant for a recommendation, it names a few businesses and moves on. It picks the ones whose information is clear, consistent and backed up by other sites. Most owners have never checked what AI says about them.</p>
+      <svg class="ten" viewBox="0 0 300 124" aria-hidden="true">
+        <g fill="#DEE1E6"><rect x="0" y="2" width="96" height="6" rx="3"/><rect x="0" y="14" width="80" height="6" rx="3"/><rect x="0" y="26" width="90" height="6" rx="3"/><rect x="0" y="38" width="72" height="6" rx="3"/><rect x="0" y="50" width="94" height="6" rx="3"/><rect x="0" y="62" width="84" height="6" rx="3"/><rect x="0" y="74" width="76" height="6" rx="3"/><rect x="0" y="86" width="92" height="6" rx="3"/><rect x="0" y="98" width="68" height="6" rx="3"/><rect x="0" y="110" width="86" height="6" rx="3"/></g>
+        <path d="M118 60h36M146 52l8 8-8 8" fill="none" stroke="#A9AFBA" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <rect x="174" y="6" width="124" height="112" rx="16" fill="#fff" stroke="#E5E7EC"/>
+        <rect x="188" y="22" width="80" height="6" rx="3" fill="#E3E6EB"/>
+        <circle cx="194" cy="50" r="6" fill="#E3E6EB"/><rect x="206" y="47" width="70" height="6" rx="3" fill="#E3E6EB"/>
+        <circle cx="194" cy="72" r="6" fill="#E3E6EB"/><rect x="206" y="69" width="60" height="6" rx="3" fill="#E3E6EB"/>
+        <rect x="183" y="84" width="106" height="24" rx="8" fill="#FFF4EA" stroke="#FE9D47" stroke-width="1.5"/>
+        <circle cx="194" cy="96" r="6" fill="#FE9D47"/><rect x="206" y="93" width="54" height="6" rx="3" fill="#F4D9BF"/>
+      </svg>
+    </div>
+    <div class="panels">
+      <div class="panel">
+        <h3>Questions your customers are already asking AI</h3>
+        <ul class="qs">
+          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4.5h12a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H9l-4 3v-3H4a1 1 0 0 1-1-1v-7a1 1 0 0 1 1-1z"/></svg>“Who is the most reliable company for this near me?”</li>
+          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4.5h12a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H9l-4 3v-3H4a1 1 0 0 1-1-1v-7a1 1 0 0 1 1-1z"/></svg>“Is this business legit?”</li>
+          <li><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4.5h12a1 1 0 0 1 1 1v7a1 1 0 0 1-1 1H9l-4 3v-3H4a1 1 0 0 1-1-1v-7a1 1 0 0 1 1-1z"/></svg>“Who answers fast and shows up on time?”</li>
+        </ul>
+      </div>
+      <div class="panel">
+        <h3>What we do</h3>
+        <ol class="does">
+          <li>Make your site easy for AI to read: who you are, what you do, where you work.</li>
+          <li>Publish plain answers to the questions your customers ask.</li>
+          <li>Fix listings and directory info that make AI unsure about you.</li>
+          <li>Re-test the same questions every month so you can see the change yourself.</li>
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec soft" id="ai-agents" aria-labelledby="s2-h">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow">AI agent teams</span>
+      <h2 class="h2" id="s2-h">Agents that work around the clock. People who make the calls.</h2>
+      <p class="lede">The audit shows where your team loses hours to repeat work. We build agents for exactly those jobs. Nothing goes out to a customer without a person approving it.</p>
+    </div>
+    <div class="agents" id="agents">
+      <article class="card" style="--i:0">
+        <div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path pathLength="1" d="M4 13l2.4-6.4A1 1 0 0 1 7.3 6h9.4a1 1 0 0 1 .9.6L20 13v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1z"/><path pathLength="1" d="M4 13h4.5l1.5 2.5h4l1.5-2.5H20"/></svg></div>
+        <h3>Lead intake</h3>
+        <p>Every inquiry gets answered, qualified and logged, at 2 a.m. on a Sunday too.</p>
+      </article>
+      <article class="card" style="--i:1">
+        <div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path pathLength="1" d="M20 12a8 8 0 1 1-2.6-5.9"/><path pathLength="1" d="M20 4v4.5h-4.5"/><path pathLength="1" d="M12 8v4l2.5 2.5"/></svg></div>
+        <h3>Follow-up</h3>
+        <p>Leads that went quiet get a timely, personal follow-up drafted for your approval.</p>
+      </article>
+      <article class="card" style="--i:2">
+        <div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path pathLength="1" d="M5 5h14a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6a1 1 0 0 1 1-1z"/><path pathLength="1" d="M4 10h16M8 3v4M16 3v4"/><path pathLength="1" d="M9 15l2 2 4-4"/></svg></div>
+        <h3>Scheduling and reminders</h3>
+        <p>Appointments get booked, confirmed and reminded, so fewer people no-show.</p>
+      </article>
+      <article class="card" style="--i:3">
+        <div class="ic"><svg viewBox="0 0 24 24" aria-hidden="true"><path pathLength="1" d="M12 3c4.4 0 8 1.3 8 3s-3.6 3-8 3-8-1.3-8-3 3.6-3 8-3z"/><path pathLength="1" d="M4 6v6c0 1.7 3.6 3 8 3s8-1.3 8-3V6"/><path pathLength="1" d="M4 12v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></svg></div>
+        <h3>Records that stay current</h3>
+        <p>Your CRM and job notes stay up to date without anyone retyping them.</p>
+      </article>
+    </div>
+    <figure class="quote">
+      <blockquote><p>“I don't replace your team. I make them unstoppable.”</p></blockquote>
+      <figcaption><b>Demetri Panagiotou</b>, founder</figcaption>
+    </figure>
+  </div>
+</section>
+
+<section class="sec" id="how" aria-labelledby="s3-h">
+  <div class="wrap">
+    <div class="head">
+      <span class="eyebrow blue">Where every engagement starts</span>
+      <h2 class="h2" id="s3-h">The free expert audit</h2>
+      <p class="lede">No pitch deck. You get a written diagnosis of where you stand and where AI can work for you.</p>
+    </div>
+    <ol class="steps">
+      <li class="step"><h3>We test the answers.</h3><p>Before the call, we ask ChatGPT, Gemini, Perplexity and Google the questions your customers ask, and record who gets named.</p></li>
+      <li class="step"><h3>We map your goals.</h3><p>One call on what you want more of: customers, hours back, faster replies. We find where agents could run 24/7.</p></li>
+      <li class="step"><h3>You get the report.</h3><p>Your AI visibility today, the gaps, and the top agent opportunities. It is yours whether or not you hire us.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section class="sec soft" id="faq" aria-labelledby="s4-h">
+  <div class="wrap faq">
+    <h2 class="h2" id="s4-h">Questions</h2>
+    <div class="qa">
+      <details><summary>What is AEO?<span class="pm" aria-hidden="true"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M7 2v10M2 7h10"/></svg></span></summary><p>Answer Engine Optimization. It is the work of getting your business named when someone asks an AI assistant a direct question, like who to hire for a job in their area. Search used to return ten links. AI returns one answer with a few names in it.</p></details>
+      <details><summary>What is GEO?<span class="pm" aria-hidden="true"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M7 2v10M2 7h10"/></svg></span></summary><p>Generative Engine Optimization. The same goal applied to tools that write answers, like ChatGPT, Gemini, Perplexity and Google AI Overviews. These tools pick businesses whose information is clear, consistent and backed by other sources.</p></details>
+      <details><summary>How is this different from SEO?<span class="pm" aria-hidden="true"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M7 2v10M2 7h10"/></svg></span></summary><p>SEO aims for a spot in a list of links. AEO and GEO aim for a mention inside the answer itself. Good SEO helps, but AI tools also weigh structured data, plain answers to specific questions, and what other sites say about you.</p></details>
+      <details><summary>What does the free audit include?<span class="pm" aria-hidden="true"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M7 2v10M2 7h10"/></svg></span></summary><p>We ask the major AI assistants the questions your customers ask, and record who gets named. We review your site and listings for what AI can and cannot read. We sit down with you on your main goals and map where AI agents could work 24/7. You get a written report either way.</p></details>
+      <details><summary>Do AI agents replace my staff?<span class="pm" aria-hidden="true"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M7 2v10M2 7h10"/></svg></span></summary><p>No. Agents take the repetitive work: intake, follow-up, scheduling, updating records. Your people keep the relationships and the decisions. Nothing goes out to a customer without a person approving it.</p></details>
+      <details><summary>How long until we show up in AI answers?<span class="pm" aria-hidden="true"><svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M7 2v10M2 7h10"/></svg></span></summary><p>It depends on your market and how much is already published about you. The audit gives you a baseline, and we re-test the same questions every month so you can see the change yourself.</p></details>
+    </div>
+  </div>
+</section>
+
+<section class="sec close" aria-labelledby="s5-h">
+  <div class="wrap">
+    <div class="cta">
+      <div>
+        <h2 id="s5-h">Find out what AI says about you.</h2>
+        <p>Book a call. We run the test, you keep the report. Based in Austin, Texas, working with businesses anywhere.</p>
+      </div>
+      <a class="btn btn-primary" href="https://calendar.app.google/CBG9o7r99zyKZ2Dj9" target="_blank" rel="noopener">Book your free expert audit <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 10h12M11 5l5 5-5 5"/></svg></a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <p>PremierConnect AI · Austin, Texas · <a href="mailto:contact@premierconnectai.com">contact@premierconnectai.com</a></p>
+    <nav class="flinks" aria-label="Legal"><a href="/privacy/">Privacy Policy</a><a href="/terms/">Terms &amp; Conditions</a></nav>
+    <p class="copy">© 2026 PremierConnect AI</p>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var Q='Who is the most reliable company for this near me?', D=11000, FINAL=0.9;
+  function $(id){return document.getElementById(id)}
+  var typed=$('d-typed'),caret=$('d-caret'),send=$('d-send'),bub=$('d-q'),think=$('d-think'),body=$('d-body'),tag=$('d-tag'),btn=$('d-toggle');
+  var dots=think.children,intro=$('d-intro').children,rows=[$('d-r1'),$('d-r2'),$('d-r3')];
+  function cl(x){return x<0?0:x>1?1:x}
+  function seg(t,a,b){return cl((t-a)/(b-a))}
+  function ease(x){return 1-Math.pow(1-x,3)}
+  function show(el,p,dy){el.style.opacity=p;el.style.transform='translateY('+((1-p)*dy).toFixed(2)+'px)'}
+  function sx(el,p){el.style.transform='scaleX('+p.toFixed(3)+')'}
+
+  // The whole scene is a pure function of t in [0,1].
+  function render(t){
+    var ms=t*D, sent=t>=0.3, n=Math.round(seg(t,0.05,0.27)*Q.length);
+    typed.textContent=sent?'':Q.slice(0,n);typed.scrollLeft=typed.scrollWidth;
+    var typing=t>=0.05&&t<0.27;
+    caret.style.opacity=typing?1:(Math.floor(ms/530)%2?0:1);
+    send.classList.toggle('on',n>0&&!sent);
+    send.style.transform='scale('+(1+0.14*Math.sin(Math.PI*seg(t,0.27,0.3))).toFixed(3)+')';
+    show(bub,ease(seg(t,0.3,0.35)),10);
+    var th=seg(t,0.35,0.37)*(1-seg(t,0.44,0.46));
+    think.style.opacity=th;
+    for(var i=0;i<dots.length;i++)dots[i].style.transform='translateY('+(-3*Math.abs(Math.sin(ms/220-i*0.6))).toFixed(2)+'px)';
+    for(i=0;i<intro.length;i++)sx(intro[i],ease(seg(t,0.45+i*0.03,0.52+i*0.03)));
+    var st=[0.53,0.61,0.69];
+    for(i=0;i<3;i++){
+      show(rows[i],ease(seg(t,st[i],st[i]+0.05)),12);
+      sx(rows[i].querySelector('.sk'),ease(seg(t,st[i]+0.02,st[i]+0.09)));
+    }
+    rows[2].style.setProperty('--hl',ease(seg(t,0.77,0.82)).toFixed(3));
+    var tg=ease(seg(t,0.8,0.85));
+    tag.style.opacity=tg;tag.style.transform='scale('+(0.8+0.2*tg).toFixed(3)+')';
+    body.style.opacity=(1-seg(t,0.965,0.995)).toFixed(3);
+  }
+  window.pcRender=render;
+
+  var mq=window.matchMedia?matchMedia('(prefers-reduced-motion: reduce)'):{matches:false};
+  var raf=0,start=null,cur=0,paused=false,onscreen=true;
+  function frame(now){
+    if(start===null)start=now-cur*D;
+    cur=((now-start)/D)%1;render(cur);raf=requestAnimationFrame(frame);
+  }
+  function stop(){if(raf)cancelAnimationFrame(raf);raf=0}
+  function update(){
+    if(mq.matches){stop();render(FINAL);return}
+    if(paused||!onscreen||document.hidden){stop();render(cur);return}
+    if(!raf){render(cur);start=null;raf=requestAnimationFrame(frame)}
+  }
+  btn.addEventListener('click',function(){
+    paused=!paused;btn.setAttribute('aria-pressed',paused);
+    btn.setAttribute('aria-label',paused?'Play animation':'Pause animation');update();
+  });
+  if(mq.addEventListener)mq.addEventListener('change',update);
+  document.addEventListener('visibilitychange',update);
+  if('IntersectionObserver' in window){
+    new IntersectionObserver(function(es){onscreen=es[0].isIntersecting;update()}).observe($('d-body').parentNode);
+  }
+  update();
+
+  // Agent cards: one-time draw-in on scroll.
+  var grid=$('agents');
+  if('IntersectionObserver' in window&&!mq.matches){
+    grid.classList.add('pre');
+    var io=new IntersectionObserver(function(es){
+      if(es[0].isIntersecting){grid.classList.add('in');io.disconnect()}
+    },{threshold:0.15});
+    io.observe(grid);
+  }
+})();
+</script>
+</body>
+</html>
