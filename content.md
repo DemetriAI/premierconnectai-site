@@ -92,6 +92,20 @@ Headline: Questions
 - Do AI agents replace my staff? No. Agents take the repetitive work: intake, follow-up, scheduling, updating records. Your people keep the relationships and the decisions. Nothing goes out to a customer without a person approving it.
 - How long until we show up in AI answers? It depends on your market and how much is already published about you. The audit gives you a baseline, and we re-test the same questions every month so you can see the change yourself.
 
+## Section 4b: Austin buyer questions (DRAFT 2026-10-27, awaiting Demetri)
+Source: first FoundusingAI audit of premierconnectai.com (2026-10-26, score 29, AI visibility 0 across 29 answers). These are the 8 questions AI answered without naming us. Goes into the FAQ and its FAQPage schema. No invented results: we have no paying clients yet.
+
+- Who can get my business named in ChatGPT answers in Austin, Texas? PremierConnect AI, based in Austin. We start with a free scan that asks ChatGPT, Claude, Gemini and Perplexity the questions your customers ask, and shows who gets named. Then we fix what AI cannot read about you and re-test every month.
+- Which firms build AI agents for small businesses in Austin, Texas? PremierConnect AI builds AI agents for small businesses from Austin: lead intake, follow-up, scheduling and records that stay current. We run the same kind of agents in our own business today. Nothing goes out to a customer without a person approving it.
+- Who does AEO and GEO work for businesses in Austin, Texas? PremierConnect AI does AEO and GEO from Austin, for businesses in Austin and anywhere else. We make your site easy for AI to read, publish plain answers to the questions your customers ask, fix your listings, and re-test the same questions every month.
+- What are the best AI search visibility agencies in Austin, Texas, and how do they compare? Compare them on what you can check. Do they show you what AI says about you today, before you pay? Do they re-test the same questions every month? Do they promise a top spot nobody controls? PremierConnect AI gives you the baseline free, re-tests monthly, and makes no ranking promises.
+- How do AI agent builders in Austin, Texas compare on price and results? Ask each one for a written scope, what you own at the end, and how results get counted. PremierConnect AI starts with a free written audit, and every lead an agent touches is tagged, so you see leads touched, appointments booked and revenue tied to them. PRICING LINE PENDING DEMETRI.
+- How much does AI search visibility consulting cost in Austin, Texas? PENDING DEMETRI. Proposed: The audit is free. Monthly plans are Starter $500, Growth $1,000 and Scale $2,000, depending on how many agents and locations you need.
+- Is it safe to hire an AI visibility firm, and what should I check first? Check four things. They show you a baseline before you pay. They do not promise a number one spot, because nobody controls AI answers. A person approves anything sent to your customers. And you can see the monthly re-test yourself.
+- My customers ask ChatGPT who to call, but it never names us. Who can fix that? Start with the free scan at FoundusingAI. It shows which questions you are missing, who AI names instead, and gives you four ready-made files so AI can read your site. PremierConnect AI, in Austin, can make the fixes for you.
+
+Also open from the audit: a phone number in the page and the Organization schema (Demetri supplies it), an Austin AEO/GEO page, off-site listings (clutch.co, 50pros.com).
+
 ## Closing
 Headline: Find out what AI says about you.
 
