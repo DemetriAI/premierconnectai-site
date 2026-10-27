@@ -58,6 +58,7 @@ h1,h2,h3{font-family:var(--disp);letter-spacing:-.035em;line-height:.98;margin:0
 .top .logo img{width:clamp(176px,22vw,250px);height:auto}
 .top .logo .l-dark{display:none}
 .top.light{background:rgba(246,245,242,.86);backdrop-filter:saturate(1.4) blur(14px);-webkit-backdrop-filter:saturate(1.4) blur(14px);box-shadow:0 1px 0 var(--line)}
+.top.dk{background:rgba(7,9,15,.82);backdrop-filter:saturate(1.4) blur(14px);-webkit-backdrop-filter:saturate(1.4) blur(14px);box-shadow:0 1px 0 rgba(255,255,255,.07)}
 .top.light .logo .l-dark{display:block}.top.light .logo .l-light{display:none}
 .top nav{display:flex;align-items:center;gap:26px;font:500 15px/1 var(--body)}
 .top nav a{text-decoration:none;color:#e7ebf2}
@@ -73,14 +74,14 @@ h1,h2,h3{font-family:var(--disp);letter-spacing:-.035em;line-height:.98;margin:0
 
 /* HERO ------------------------------------------------------------ */
 .hero{position:relative;background:var(--night);color:#eef2f8}
-.hero .stage{position:relative;min-height:100svh;display:grid;grid-template-columns:1.05fr 1fr;align-items:center;gap:clamp(24px,4vw,64px);padding:110px var(--pad) 60px;overflow:hidden}
+.hero .stage{position:relative;min-height:100svh;display:grid;grid-template-columns:1.05fr 1fr;align-items:center;gap:clamp(24px,4vw,64px);padding:100px var(--pad) 44px;overflow:hidden}
 .glow{position:absolute;border-radius:50%;filter:blur(70px);pointer-events:none;opacity:.55}
 .glow.o{width:46vw;height:46vw;background:radial-gradient(circle,rgba(254,157,71,.55),transparent 65%);left:-12vw;top:-10vw}
 .glow.b{width:52vw;height:52vw;background:radial-gradient(circle,rgba(2,166,254,.45),transparent 65%);right:-16vw;bottom:-20vw}
 .grain{position:absolute;inset:0;opacity:.06;pointer-events:none;background-image:radial-gradient(rgba(255,255,255,.7) 1px,transparent 1px);background-size:3px 3px}
 .hero .copy{position:relative;z-index:2}
 .hero .eyebrow{color:var(--orange)}
-.hero h1{font-size:clamp(44px,6.6vw,96px);font-weight:800}
+.hero h1{font-size:clamp(44px,min(6.6vw,8.8svh),96px);font-weight:800}
 .hero h1 .ai{color:var(--blue)}
 .hero h1 .you{background:linear-gradient(var(--orange),var(--orange)) 0 92%/100% .09em no-repeat;padding-bottom:.04em}
 .hero .sub{max-width:34em;color:#b9c2d0;font-size:clamp(17px,1.4vw,19px);margin:26px 0 30px}
@@ -124,13 +125,13 @@ h1,h2,h3{font-family:var(--disp);letter-spacing:-.035em;line-height:.98;margin:0
 @keyframes blink{50%{opacity:0}}
 .inp .send{margin-left:auto;width:32px;height:32px;border-radius:10px;background:#2a3140;display:grid;place-items:center;flex:none}
 .inp .send svg{width:16px;height:16px;color:#cfd6e2}
-.chain{position:absolute;right:-34px;top:-58px;width:104px;height:104px;z-index:3;pointer-events:none;filter:drop-shadow(0 8px 24px rgba(254,157,71,.45))}
+.chain{position:absolute;right:-34px;top:-74px;width:104px;height:104px;z-index:3;pointer-events:none;filter:drop-shadow(0 8px 24px rgba(254,157,71,.45))}
 .chain rect,.chain path{fill:none;stroke-width:10;stroke-linecap:round}
 @media (max-width:900px){
   .hero .stage{grid-template-columns:1fr;align-content:start;padding-top:96px;gap:28px}
   .chat{justify-self:stretch}
   .thread{min-height:262px}
-  .chain{width:70px;height:70px;right:2px;top:-40px}
+  .chain{width:70px;height:70px;right:2px;top:-54px}
   .hero h1{font-size:clamp(34px,9.4vw,46px)}
   .hero .eyebrow{font-size:11px;letter-spacing:.12em}
   .thread{min-height:200px;gap:9px}
@@ -143,6 +144,7 @@ h1,h2,h3{font-family:var(--disp);letter-spacing:-.035em;line-height:.98;margin:0
   .anim .hero .copy{position:static}
   .anim .hero-end{position:absolute;left:0;right:0;bottom:0;z-index:4;padding:56px var(--pad) max(26px,env(safe-area-inset-bottom));background:linear-gradient(transparent,rgba(7,9,15,.92) 34%)}
   .anim .hero-end .sub{margin-top:0}
+  html:not(.anim) .chat{margin-top:40px}
   .scrollhint{display:none}
 }
 
@@ -159,14 +161,14 @@ section{position:relative}
 .res{position:absolute;left:0;right:0;height:48px;border-radius:12px;background:#fff;border:1px solid var(--line);padding:9px 14px;box-shadow:0 6px 18px -12px rgba(11,15,23,.25)}
 .res b{display:block;width:var(--w,60%);height:9px;border-radius:5px;background:#1a5fd0;opacity:.75;margin-bottom:8px}
 .res i{display:block;width:var(--w2,85%);height:6px;border-radius:4px;background:#dcdad4}
-.one{position:absolute;left:4%;right:4%;top:50%;translate:0 -50%;border-radius:24px;padding:22px;background:var(--night);color:#eef2f8;box-shadow:0 40px 90px -30px rgba(7,9,15,.6);opacity:0}
+.one{position:absolute;left:4%;right:4%;top:50%;translate:0 -50%;border-radius:24px;padding:22px;background:var(--night);color:#eef2f8;box-shadow:0 40px 90px -30px rgba(7,9,15,.6)}
 .one .lbl{font:600 11px/1 var(--body);letter-spacing:.16em;text-transform:uppercase;color:#8c97a8;margin-bottom:14px}
 .one .nm{display:flex;align-items:center;gap:12px;padding:11px 0;border-top:1px solid rgba(255,255,255,.1);font-weight:600}
 .one .nm:first-of-type{border-top:0}
 .one .nm span{width:24px;height:24px;border-radius:7px;display:grid;place-items:center;background:rgba(255,255,255,.1);font-size:12px}
 .one .nm.me{color:#fff}.one .nm.me span{background:var(--orange);color:#14100b}
 .one .nm.me em{margin-left:auto;font-style:normal}
-@media (max-width:900px){.collapse .stage{grid-template-columns:1fr;align-content:start;padding-top:96px}.serp{height:360px}}
+@media (max-width:900px){.collapse .stage{grid-template-columns:1fr;align-content:start;padding-top:96px}.serp{height:340px}.res{height:38px;padding:8px 12px}.res b{margin-bottom:6px}.one{left:0;right:0}.one .nm{white-space:nowrap}}
 
 .panels{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:clamp(40px,6vw,80px)}
 .panel{border-radius:var(--r);padding:clamp(22px,3vw,34px);background:#fff;border:1px solid var(--line)}
@@ -190,11 +192,12 @@ section{position:relative}
 .track .path .base{stroke:rgba(255,255,255,.12);stroke-width:2;fill:none;stroke-dasharray:4 7}
 .track .path .lit{stroke:url(#grad);stroke-width:3;fill:none;stroke-linecap:round}
 .orb{position:absolute;left:0;top:0;width:18px;height:18px;margin:-9px 0 0 -9px;border-radius:50%;background:#fff;box-shadow:0 0 0 6px rgba(254,157,71,.35),0 0 40px 8px rgba(254,157,71,.7);z-index:3}
-.st{position:absolute;width:min(300px,62%);border-radius:18px;padding:16px 18px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);transition:background .35s,border-color .35s,box-shadow .35s,opacity .35s;opacity:.45}
+.st{position:absolute;width:min(300px,47%);border-radius:18px;padding:16px 18px;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.12);transition:background .35s,border-color .35s,box-shadow .35s,opacity .35s;opacity:.65}
+html:not(.anim) .orb{display:none}
 .st h3{font:700 18px/1.2 var(--disp);letter-spacing:-.01em;margin:0 0 6px;color:#fff}
 .st p{margin:0;font-size:14.5px;line-height:1.5;color:#b9c2d0}
 .st.on{opacity:1;background:rgba(2,166,254,.1);border-color:rgba(2,166,254,.6);box-shadow:0 20px 60px -20px rgba(2,166,254,.6)}
-.st .ok{display:inline-flex;align-items:center;gap:6px;margin-top:10px;font:600 12px/1 var(--body);padding:6px 10px;border-radius:999px;background:rgba(40,200,64,.16);color:#7be38a;opacity:0}
+.st .ok{display:inline-flex;align-items:center;gap:6px;margin-top:10px;font:600 12px/1 var(--body);padding:6px 10px;border-radius:999px;background:rgba(40,200,64,.16);color:#7be38a}
 .s1{left:0;top:0}.s2{right:0;top:24%}.s3{left:0;top:50%}.s4{right:0;top:76%}
 .quote{padding:clamp(70px,10vw,130px) 0;background:var(--night);color:#fff}
 .quote blockquote{margin:0;font:800 clamp(34px,5.4vw,84px)/1.02 var(--disp);letter-spacing:-.04em;max-width:15em}
@@ -203,8 +206,8 @@ section{position:relative}
 .quote cite::before{content:"";display:inline-block;width:28px;height:2px;background:var(--orange);vertical-align:middle;margin-right:12px}
 @media (max-width:900px){
   .agents .stage{grid-template-columns:1fr;align-content:start;padding-top:92px;gap:24px}
-  .track{height:min(560px,64svh)}
-  .st{width:78%;padding:12px 14px}.st p{font-size:13.5px}
+  .track{height:640px}
+  .st{width:auto;left:30px;right:0;padding:12px 14px}.st p{font-size:13.5px}
   .s1{top:0}.s2{top:25%}.s3{top:50%}.s4{top:75%}
 }
 
@@ -238,7 +241,7 @@ details p{margin:0 0 22px;color:var(--muted);max-width:40em}
 .close h2 .w{display:inline-block}
 .close p{color:#b9c2d0;font-size:clamp(17px,1.4vw,20px);max-width:32em;margin:26px auto 38px}
 .close .btn{font-size:18px;padding:20px 32px}
-.close .talk{margin:22px 0 0;font-size:15px;color:#8c97a8}
+.close .talk{margin:22px auto 0;font-size:15px;color:#8c97a8}
 .close .talk a{color:#e7ebf2}
 .close .glow.o{left:auto;right:-10vw;top:auto;bottom:-20vw}
 .close .glow.b{right:auto;left:-14vw;top:-20vw;bottom:auto}
@@ -247,6 +250,9 @@ footer a{color:#cfd6e2}
 
 /* Final states are the defaults (no JS, reduced motion). JS adds .anim and drives from there. */
 .rm .scrollhint{display:none}
+html:not(.anim) .think{display:none}
+html:not(.anim) .hz{width:auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))}
+html:not(.anim) .card{width:auto}
 @media (prefers-reduced-motion:reduce){.scrollhint i::after,.think i,.inp .caret{animation:none}}
 </style>
 </head>
@@ -436,7 +442,9 @@ footer a{color:#cfd6e2}
   var top=document.getElementById('top');
   var heroEl=document.getElementById('hero');
   // header: light treatment once the dark hero is behind us (works with or without motion)
-  function hdr(){var b=heroEl.getBoundingClientRect().bottom;top.classList.toggle('light',b<70&&!overDark());}
+  var heroStage=heroEl.querySelector('.stage');
+  // light bar over light sections; dark glass bar once content scrolls under it on dark ones
+  function hdr(){var b=heroEl.getBoundingClientRect().bottom,lt=b<70&&!overDark();top.classList.toggle('light',lt);top.classList.toggle('dk',!lt&&heroStage.getBoundingClientRect().top<-4);}
   function overDark(){var y=70,els=document.querySelectorAll('.agents,.quote,.close');for(var i=0;i<els.length;i++){var r=els[i].getBoundingClientRect();if(r.top<y&&r.bottom>y)return true}return false}
   addEventListener('scroll',hdr,{passive:true});hdr();
 
@@ -504,13 +512,16 @@ footer a{color:#cfd6e2}
   var serp=document.getElementById('serp');
   var widths=[[62,88],[48,80],[70,92],[55,76],[66,90],[44,84],[72,70],[58,86],[50,78],[64,82]];
   var res=widths.map(function(w,i){var d=document.createElement('div');d.className='res';d.style.top=(i*10)+'%';d.style.setProperty('--w',w[0]+'%');d.style.setProperty('--w2',w[1]+'%');d.innerHTML='<b></b><i></i>';serp.insertBefore(d,serp.firstChild);return d;});
+  // the heading and the ten links arrive while the section scrolls in, so it is never blank when the pin starts
+  gsap.timeline({defaults:{ease:'none'},scrollTrigger:{trigger:'#ai-search',start:'top 85%',end:'top top',scrub:.6}})
+     .from('#h-search',{y:50,autoAlpha:0,duration:.3},0)
+     .from('#ai-search .lede',{y:30,autoAlpha:0,duration:.3},.15)
+     .from(res,{autoAlpha:0,x:60,stagger:.05,duration:.3},.25);
   var tl2=gsap.timeline({defaults:{ease:'none'},scrollTrigger:{trigger:'#ai-search .stage',start:'top top',end:'+=160%',scrub:.6,pin:true,anticipatePin:1}});
-  tl2.from(res,{autoAlpha:0,x:60,stagger:.03,duration:.12},0)
-     .from('#h-search',{y:50,autoAlpha:0,duration:.15},0)
-     .from('#ai-search .lede',{y:30,autoAlpha:0,duration:.15},.08)
-     .to(res,{top:'42%',scale:.9,autoAlpha:0,stagger:{each:.012,from:'edges'},duration:.22,ease:'power3.in'},.42)
-     .fromTo('#one',{autoAlpha:0,scale:.7,rotate:-4},{autoAlpha:1,scale:1,rotate:0,duration:.16,ease:'back.out(1.6)'},.62)
-     .from('#one .nm',{x:-20,autoAlpha:0,stagger:.03,duration:.08},.7)
+  tl2.to({},{duration:.12},0)
+     .to(res,{top:'42%',scale:.9,autoAlpha:0,stagger:{each:.012,from:'edges'},duration:.22,ease:'power3.in'},.12)
+     .fromTo('#one',{autoAlpha:0,scale:.7,rotate:-4},{autoAlpha:1,scale:1,rotate:0,duration:.16,ease:'back.out(1.6)'},.32)
+     .from('#one .nm',{x:-20,autoAlpha:0,stagger:.03,duration:.08},.4)
      .to({},{duration:.12});
 
   gsap.utils.toArray('.reveal').forEach(function(el){gsap.from(el,{y:60,autoAlpha:0,duration:1,ease:'expo.out',scrollTrigger:{trigger:el,start:'top 85%'}});gsap.from(el.querySelectorAll('li'),{y:20,autoAlpha:0,stagger:.08,duration:.7,ease:'power3.out',scrollTrigger:{trigger:el,start:'top 80%'}});});
@@ -519,7 +530,7 @@ footer a{color:#cfd6e2}
   var track=document.getElementById('track'),pBase=document.getElementById('pBase'),pLit=document.getElementById('pLit'),orb=document.getElementById('orb');
   var sts=gsap.utils.toArray('.st');
   function buildPath(){
-    var tr=track.getBoundingClientRect(),pts=sts.map(function(s){var r=s.getBoundingClientRect();var leftSide=(r.left-tr.left)<tr.width*.3;return {x:leftSide?(r.right-tr.left)+14:(r.left-tr.left)-14,y:(r.top-tr.top)+r.height/2};});
+    var tr=track.getBoundingClientRect(),pts=sts.map(function(s,i){var r=s.getBoundingClientRect();var leftSide=i%2===0,rail=innerWidth<=900;return {x:rail?11+2*(i%2):leftSide?(r.right-tr.left)+14:(r.left-tr.left)-14,y:(r.top-tr.top)+r.height/2};}); // phone: one rail down the left gutter (2px sway keeps the gradient's bounding box non-zero, or the lit stroke vanishes)
     var d='M'+pts[0].x+','+pts[0].y;
     for(var i=1;i<pts.length;i++){var a=pts[i-1],b=pts[i],my=(a.y+b.y)/2;d+=' C'+a.x+','+my+' '+b.x+','+my+' '+b.x+','+b.y;}
     pBase.setAttribute('d',d);pLit.setAttribute('d',d);
@@ -537,7 +548,10 @@ footer a{color:#cfd6e2}
   }
   sts.forEach(function(s){s.classList.remove('on')});
   drawAgents(0);
-  ScrollTrigger.create({trigger:'#ai-agents .stage',start:'top top',end:'+=220%',pin:true,scrub:true,anticipatePin:1,onUpdate:function(self){drawAgents(self.progress);},onRefresh:function(self){L=buildPath();drawAgents(self.progress);}});
+  function agentsST(o){return ScrollTrigger.create(Object.assign({onUpdate:function(self){drawAgents(self.progress);},onRefresh:function(self){L=buildPath();drawAgents(self.progress);}},o));}
+  // desktop: pin the whole scene; phone: the copy and four cards cannot fit one screen, so the path draws as the cards scroll past
+  mm.add('(min-width:901px)',function(){agentsST({trigger:'#ai-agents .stage',start:'top top',end:'+=220%',pin:true,scrub:true,anticipatePin:1});});
+  mm.add('(max-width:900px)',function(){agentsST({trigger:'#track',start:'top 72%',end:'bottom 62%',scrub:.5});});
   gsap.from('#ai-agents .stage > div:first-child > *',{y:40,autoAlpha:0,stagger:.08,duration:1,ease:'expo.out',scrollTrigger:{trigger:'#ai-agents',start:'top 70%'}});
 
   /* QUOTE + CLOSING: words rise ----------------------------------- */
