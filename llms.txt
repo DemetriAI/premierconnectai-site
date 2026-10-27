@@ -7,6 +7,9 @@
 - AEO and GEO: make your site easy for AI to read, publish plain answers to customer questions, fix listings, re-test monthly.
 - AI agent teams: lead intake, follow-up, scheduling and reminders, records that stay current. A person approves anything sent to a customer.
 
+## Pricing
+- Free expert audit. Monthly plans: Starter $500, Growth $1,000, Scale $2,000.
+
 ## Systems we built and run
 - Email outreach agent, AI content team, AEO and GEO audit agent, live SMS agent, custom CRM.
 
