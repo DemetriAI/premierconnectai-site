@@ -56,6 +56,20 @@ Cards:
 Quote: "I don't replace your team. I make them unstoppable."
 Attribution: Demetri Panagiotou, founder
 
+## Section 2b: What we've built (draft 2026-10-26, from Demetri's list; awaiting his yes)
+Eyebrow: Built and running in our own business
+
+Headline: We run everything we sell.
+
+Body: Every system below runs PremierConnect AI today. We built them for ourselves first, and we can build them for you.
+
+Cards:
+- Email outreach agent: Follows up on a loop until the prospect replies. Daily, weekly and monthly reports.
+- AI content team: A team of AI agents that writes, designs and drafts our posts.
+- AEO and GEO audit agent: Gives business owners a free audit of where they show up in AI search, plus four ready-made files so AI agents can actually read their site. Link: Try it free -> https://foundusingai.premierconnectai.com/
+- Live SMS agent: Finds and verifies leads, writes the messages and tracks results. Daily, weekly and monthly reports, with recordings and transcripts.
+- Custom CRM: Replaces HubSpot, Salesforce and Zoho, with workflow automation, agents you can talk to in real time, and a cloud computer for each agent. You own the code, and it saves us $500+ a month.
+
 ## Section 3: How it works
 Eyebrow: Where every engagement starts
 
