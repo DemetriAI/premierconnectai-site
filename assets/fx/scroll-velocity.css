@@ -1,0 +1,46 @@
+/* Ported from React Bits by David Haz, MIT + Commons Clause */
+/* ScrollVelocity rows. Override font-size / color on .sv-scroller from the page. */
+
+.sv-root {
+  width: 100%;
+}
+
+.sv-parallax {
+  position: relative;
+  overflow: hidden;
+}
+
+.sv-draggable {
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: pan-y;
+}
+
+.sv-scroller {
+  display: flex;
+  white-space: nowrap;
+  text-align: center;
+  font-family: inherit;
+  font-size: 2.25rem;
+  font-weight: bold;
+  letter-spacing: -0.02em;
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.1));
+  will-change: transform;
+}
+
+.sv-scroller > span {
+  flex-shrink: 0;
+}
+
+.sv-outline {
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: max(1px, 0.028em) currentColor;
+}
+
+@media (min-width: 768px) {
+  .sv-scroller {
+    font-size: 5rem;
+    line-height: 5rem;
+  }
+}

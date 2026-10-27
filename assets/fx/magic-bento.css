@@ -1,0 +1,126 @@
+/* Ported from React Bits by David Haz, MIT + Commons Clause */
+/*
+ * MagicBento effect layers. Card content is not restyled.
+ * Vars on the grid: --mb-glow-rgb, --mb-glow-alpha, --mb-spot-alpha, --mb-spot-size, --mb-border-size.
+ * Vars on each card (written by JS): --mb-x, --mb-y, --mb-near, --mb-hot, --mb-rx, --mb-ry,
+ * --mb-tx, --mb-ty, --mb-press, --mb-wx, --mb-wy, --mb-wr, --mb-wa, --mb-bw.
+ */
+
+.mb-card {
+  isolation: isolate;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.mb-card.mb-pos {
+  position: relative;
+}
+
+/* Motion channels use the individual transform properties so a card's own
+   `transform` (hover lifts, reveal tweens) keeps working. Tilt needs `transform`. */
+.mb-grid.mb-press .mb-card {
+  scale: var(--mb-press, 1);
+}
+
+.mb-grid.mb-magnet .mb-card {
+  translate: var(--mb-tx, 0px) var(--mb-ty, 0px);
+}
+
+.mb-grid.mb-tilt .mb-card {
+  transform: perspective(900px) rotateX(var(--mb-rx, 0deg)) rotateY(var(--mb-ry, 0deg));
+}
+
+/* Cursor spotlight, painted under the card content. */
+.mb-light {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  background: radial-gradient(
+    var(--mb-spot-size, 300px) circle at var(--mb-x, -999px) var(--mb-y, -999px),
+    rgba(var(--mb-glow-rgb), calc(var(--mb-spot-alpha) * var(--mb-hot, 0) * 1)) 0%,
+    rgba(var(--mb-glow-rgb), calc(var(--mb-spot-alpha) * var(--mb-hot, 0) * 0.973)) 15%,
+    rgba(var(--mb-glow-rgb), calc(var(--mb-spot-alpha) * var(--mb-hot, 0) * 0.837)) 30%,
+    rgba(var(--mb-glow-rgb), calc(var(--mb-spot-alpha) * var(--mb-hot, 0) * 0.593)) 45%,
+    rgba(var(--mb-glow-rgb), calc(var(--mb-spot-alpha) * var(--mb-hot, 0) * 0.317)) 60%,
+    rgba(var(--mb-glow-rgb), calc(var(--mb-spot-alpha) * var(--mb-hot, 0) * 0.104)) 75%,
+    rgba(var(--mb-glow-rgb), calc(var(--mb-spot-alpha) * var(--mb-hot, 0) * 0.009)) 90%,
+    rgba(var(--mb-glow-rgb), 0) 100%
+  );
+  pointer-events: none;
+}
+
+/* Floating particles (enableStars), under the card content. */
+.mb-stars {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  display: block;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  pointer-events: none;
+}
+
+/* Border glow ring + click ripple, drawn over the card's own border. */
+.mb-border {
+  position: absolute;
+  inset: calc(var(--mb-bw, 0px) * -1);
+  z-index: 1;
+  box-sizing: border-box;
+  padding: max(1px, var(--mb-bw, 0px));
+  border-radius: inherit;
+  background:
+    radial-gradient(
+      var(--mb-border-size, 225px) circle at var(--mb-x, -999px) var(--mb-y, -999px),
+      rgba(var(--mb-glow-rgb), calc(var(--mb-glow-alpha) * var(--mb-near, 0) * 1)) 0%,
+      rgba(var(--mb-glow-rgb), calc(var(--mb-glow-alpha) * var(--mb-near, 0) * 0.973)) 15%,
+      rgba(var(--mb-glow-rgb), calc(var(--mb-glow-alpha) * var(--mb-near, 0) * 0.837)) 30%,
+      rgba(var(--mb-glow-rgb), calc(var(--mb-glow-alpha) * var(--mb-near, 0) * 0.593)) 45%,
+      rgba(var(--mb-glow-rgb), calc(var(--mb-glow-alpha) * var(--mb-near, 0) * 0.317)) 60%,
+      rgba(var(--mb-glow-rgb), calc(var(--mb-glow-alpha) * var(--mb-near, 0) * 0.104)) 75%,
+      rgba(var(--mb-glow-rgb), calc(var(--mb-glow-alpha) * var(--mb-near, 0) * 0.009)) 90%,
+      rgba(var(--mb-glow-rgb), 0) 100%
+    ),
+    radial-gradient(
+      circle at var(--mb-wx, -999px) var(--mb-wy, -999px),
+      rgba(var(--mb-glow-rgb), 0) calc(var(--mb-wr, 0px) - 110px),
+      rgba(var(--mb-glow-rgb), calc(var(--mb-glow-alpha) * var(--mb-wa, 0) * 0.1)) calc(var(--mb-wr, 0px) - 80px),
+      rgba(var(--mb-glow-rgb), calc(var(--mb-glow-alpha) * var(--mb-wa, 0) * 0.32)) calc(var(--mb-wr, 0px) - 52px),
+      rgba(var(--mb-glow-rgb), calc(var(--mb-glow-alpha) * var(--mb-wa, 0) * 0.68)) calc(var(--mb-wr, 0px) - 28px),
+      rgba(var(--mb-glow-rgb), calc(var(--mb-glow-alpha) * var(--mb-wa, 0) * 0.94)) calc(var(--mb-wr, 0px) - 10px),
+      rgba(var(--mb-glow-rgb), calc(var(--mb-glow-alpha) * var(--mb-wa, 0))) calc(var(--mb-wr, 0px) - 3px),
+      rgba(var(--mb-glow-rgb), 0) var(--mb-wr, 0px)
+    );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask:
+    linear-gradient(#000 0 0) content-box exclude,
+    linear-gradient(#000 0 0);
+  pointer-events: none;
+}
+
+/* Touch devices and narrow screens: a static glow on the border, no tracking. */
+.mb-grid.mb-static .mb-light,
+.mb-grid.mb-static .mb-stars {
+  display: none;
+}
+
+.mb-grid.mb-static .mb-border {
+  background:
+    radial-gradient(
+      circle at var(--mb-wx, -999px) var(--mb-wy, -999px),
+      rgba(var(--mb-glow-rgb), 0) calc(var(--mb-wr, 0px) - 110px),
+      rgba(var(--mb-glow-rgb), calc(var(--mb-glow-alpha) * var(--mb-wa, 0) * 0.32)) calc(var(--mb-wr, 0px) - 52px),
+      rgba(var(--mb-glow-rgb), calc(var(--mb-glow-alpha) * var(--mb-wa, 0))) calc(var(--mb-wr, 0px) - 3px),
+      rgba(var(--mb-glow-rgb), 0) var(--mb-wr, 0px)
+    ),
+    linear-gradient(
+      135deg,
+      rgba(var(--mb-glow-rgb), calc(var(--mb-glow-alpha) * 0.6)) 0%,
+      rgba(var(--mb-glow-rgb), calc(var(--mb-glow-alpha) * 0.12)) 35%,
+      rgba(var(--mb-glow-rgb), 0) 60%,
+      rgba(var(--mb-glow-rgb), calc(var(--mb-glow-alpha) * 0.25)) 100%
+    );
+}
