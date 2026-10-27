@@ -1,0 +1,675 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>AI Search Visibility and AI Agent Teams | PremierConnect AI</title>
+<meta name="description" content="People now ask ChatGPT, Google and Perplexity before they ever pick up the phone. PremierConnect AI gets your business named in those answers, then builds AI agents that take the busywork off your team.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#FE9D47">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wdth,wght@12..96,75..100,500..800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#07090f; --navy2:#0b0f17; --blue:#02A6FE; --blue-ink:#0070b0;
+  --orange:#FE9D47; --orange-ink:#a9560c; --paper:#f6f5f2; --white:#fff;
+  --pad:24px; --hdr:64px;
+  --display:'Bricolage Grotesque', 'Arial Narrow', system-ui, sans-serif;
+  --body:'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--navy);font:400 17px/1.55 var(--body);position:relative;overflow-x:hidden}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--blue);outline-offset:3px}
+
+/* ---------- header ---------- */
+.top{position:sticky;top:0;z-index:20;height:var(--hdr);background:var(--white);border-bottom:3px solid var(--navy);
+  display:flex;align-items:center;justify-content:space-between;gap:12px;padding:0 16px}
+.brand{display:flex;align-items:center;min-height:44px;flex:0 1 auto;min-width:0}
+.brand img{width:158px;height:auto}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:52px;padding:0 22px;
+  font:700 17px/1.1 var(--body);text-decoration:none;color:var(--navy);background:var(--orange);
+  border:3px solid var(--navy);box-shadow:5px 5px 0 var(--navy);transition:transform .12s, box-shadow .12s;text-align:center}
+.btn:hover{transform:translate(-2px,-2px);box-shadow:7px 7px 0 var(--navy)}
+.btn:active{transform:translate(4px,4px);box-shadow:1px 1px 0 var(--navy)}
+.btn-sm{min-height:44px;padding:0 14px;font-size:15px;box-shadow:3px 3px 0 var(--navy);white-space:nowrap;flex:0 0 auto}
+.btn-sm:hover{box-shadow:4px 4px 0 var(--navy)}
+.btn-navy{background:var(--navy);color:var(--white);border-color:var(--navy);box-shadow:5px 5px 0 var(--white)}
+.btn-navy:hover{box-shadow:7px 7px 0 var(--white)}
+.btn .arr{font-size:20px;line-height:1}
+
+/* ---------- sections ---------- */
+.s{position:relative;padding:104px 0;overflow-x:clip}
+.wrap{position:relative;z-index:2;max-width:1240px;margin:0 auto;padding:0 var(--pad)}
+.hero{background:var(--orange);padding-top:56px}
+.dark{background:var(--navy2);color:var(--white)}
+.paper{background:var(--paper)}
+.blue{background:var(--blue)}
+.close{background:var(--orange)}
+#how{scroll-margin-top:var(--hdr)}
+
+.eyebrow{display:inline-block;margin:0 0 22px;padding:7px 11px;font:700 14px/1.2 var(--body);letter-spacing:.09em;text-transform:uppercase;
+  background:var(--navy);color:var(--white)}
+.dark .eyebrow{background:var(--orange);color:var(--navy)}
+.blue .eyebrow{background:var(--navy);color:var(--white)}
+
+.mega{margin:0;font-family:var(--display);font-weight:800;font-stretch:75%;font-variation-settings:"opsz" 96;
+  letter-spacing:-.004em;line-height:.9;text-wrap:balance}
+h1.mega{font-size:clamp(50px,15.2vw,164px)}
+h2.mega{font-size:clamp(46px,13.4vw,140px)}
+.w{display:inline-block;white-space:pre}
+.accent{color:var(--orange)}
+.ink-blue{color:var(--blue-ink)}
+.ink-orange{color:var(--orange-ink)}
+
+/* the slot: a name dropping into a sentence */
+.slot{display:inline-block;position:relative;background:var(--navy);color:var(--white);padding:.02em .14em .08em;margin:.04em 0;
+  transform:rotate(-2deg);transform-origin:0 50%;white-space:nowrap}
+.slot .in{display:inline-block}
+.slot.on-white{background:var(--orange);color:var(--navy)}
+.slot.alt{background:var(--orange);color:var(--navy)}
+
+.lede{max-width:640px;margin:30px 0 0;font-size:19px;line-height:1.55;font-weight:500}
+.ctas{display:flex;flex-wrap:wrap;align-items:center;gap:14px 26px;margin-top:32px}
+.textlink{display:inline-flex;align-items:center;min-height:48px;font-weight:700;font-size:17px;text-decoration:underline;text-decoration-thickness:3px;text-underline-offset:6px}
+.fine{margin:22px 0 0;font-size:16px;line-height:1.5;max-width:560px}
+.hero .fine{color:var(--navy)}
+
+/* big decorative link in the hero (desktop only) */
+.hero-link{display:none}
+
+/* seam node: the chain link that joins two sections */
+.node{position:absolute;left:50%;bottom:0;z-index:5;width:108px;height:60px;transform:translate(-50%,50%);
+  background:var(--paper);border:3px solid var(--navy);box-shadow:4px 4px 0 var(--navy);display:grid;place-items:center}
+.node svg{width:84px;height:44px;overflow:visible}
+
+/* chain line overlay */
+#chain{position:absolute;left:0;top:0;z-index:1;pointer-events:none;overflow:visible}
+#chain path{fill:none;stroke-width:6;stroke-linecap:round;stroke-linejoin:round}
+#chain .lnL{stroke:var(--navy)}
+#chain .lnD{stroke:var(--orange)}
+#chain .head{fill:var(--orange);stroke:var(--navy);stroke-width:4}
+
+/* ---------- AI search ---------- */
+.tenone{display:grid;grid-template-columns:1fr auto 1.15fr;align-items:center;gap:14px;margin:40px 0 0;max-width:620px}
+.ten{display:grid;gap:5px}
+.ten i{display:block;height:7px;background:#3a4252}
+.ten i:nth-child(1){background:var(--blue)}
+.ten i:nth-child(odd){width:100%}.ten i:nth-child(even){width:78%}
+.ten i:nth-child(3n){width:88%}
+.tn-label{display:block;margin-top:10px;font:700 14px/1 var(--body);letter-spacing:.08em;text-transform:uppercase;color:#aab2c0}
+.tn-arrow{font:800 34px/1 var(--display);color:var(--orange)}
+.one{background:var(--orange);color:var(--navy);padding:14px 14px 12px;border:3px solid var(--orange);transform-origin:0 50%}
+.one b{display:block;font:800 64px/.85 var(--display);font-stretch:75%}
+.one span{display:block;margin-top:4px;font:700 14px/1 var(--body);letter-spacing:.08em;text-transform:uppercase}
+
+.body{max-width:640px;margin:36px 0 0;font-size:18px;line-height:1.6;color:#d5dae3}
+.paper .body{color:#2a2f3a}
+
+.answer{margin:56px 0 0;background:var(--white);color:var(--navy);border:3px solid var(--white);box-shadow:8px 8px 0 var(--blue);padding:22px 18px 22px}
+.q-label{margin:0 0 12px;font:700 14px/1.2 var(--body);letter-spacing:.08em;text-transform:uppercase;color:#4a5160}
+.qs{display:flex;flex-wrap:wrap;gap:8px}
+.q{min-height:48px;padding:10px 14px;font:600 16px/1.3 var(--body);color:var(--navy);background:var(--paper);border:2px solid var(--navy);cursor:pointer;text-align:left}
+.q[aria-pressed="true"]{background:var(--navy);color:var(--white)}
+.ask{margin:22px 0 0;padding:16px 0 0;border-top:3px solid var(--navy)}
+.tag{display:inline-block;font:700 14px/1 var(--body);letter-spacing:.08em;text-transform:uppercase;padding:6px 8px;background:var(--paper);border:2px solid var(--navy)}
+.tag.ai{background:var(--blue);border-color:var(--blue);color:var(--navy)}
+.ask-q{margin:12px 0 0;font:600 19px/1.4 var(--body)}
+.reply{margin:22px 0 0;padding:18px 0 0;border-top:3px solid var(--navy)}
+@media (min-width:1000px){.reply{border-top:0;padding:0}}
+.big-a{margin:12px 0 0;font:800 clamp(36px,10.4vw,92px)/.98 var(--display);font-stretch:75%;letter-spacing:0;min-height:2em}
+.big-a .slot{background:var(--orange);color:var(--navy);white-space:normal;overflow-wrap:anywhere;max-width:100%}
+.try{margin:26px 0 0;padding:18px 0 0;border-top:3px dashed #c8ccd4}
+.try label{display:block;font:700 16px/1.3 var(--body);margin-bottom:10px}
+.try input{width:100%;min-height:54px;padding:12px 14px;font:600 18px/1.2 var(--body);color:var(--navy);background:var(--paper);border:3px solid var(--navy);border-radius:0;-webkit-appearance:none;appearance:none}
+.try input:focus{outline:none;box-shadow:5px 5px 0 var(--blue)}
+.note{margin:12px 0 0;font-size:16px;color:#4a5160}
+
+.what{margin:76px 0 0;font:800 clamp(34px,9vw,64px)/.95 var(--display);font-stretch:75%;letter-spacing:-.02em}
+.rows{list-style:none;margin:24px 0 0;padding:0;display:grid}
+.rows li{display:grid;grid-template-columns:62px 1fr;gap:14px;align-items:start;padding:20px 0;border-top:3px solid #2a3140;font-size:18px;line-height:1.5}
+.rows li:last-child{border-bottom:3px solid #2a3140}
+.rows .n{font:800 46px/.85 var(--display);font-stretch:75%;color:var(--orange)}
+
+/* ---------- agents ---------- */
+.cards{display:grid;gap:26px;margin:52px 0 0}
+.card{position:relative;background:var(--white);border:3px solid var(--navy);box-shadow:8px 8px 0 var(--navy);padding:0 18px 22px}
+.card-top{display:flex;justify-content:space-between;align-items:center;margin:0 -18px;padding:10px 18px;border-bottom:3px solid var(--navy);background:var(--orange)}
+.card:nth-child(even) .card-top{background:var(--blue)}
+.card .num{font:800 34px/1 var(--display);font-stretch:75%}
+.card .when{font:700 14px/1 var(--body);letter-spacing:.06em;text-transform:uppercase}
+.card h3{margin:18px 0 8px;font:800 34px/.95 var(--display);font-stretch:75%;letter-spacing:-.01em}
+.card p{margin:0;font-size:17px;line-height:1.55;color:#2a2f3a}
+.flow{list-style:none;margin:18px 0 0;padding:0;display:grid;gap:8px}
+.flow li{display:flex;align-items:center;gap:10px;font:600 16px/1.3 var(--body)}
+.flow li{color:#7a808c;transition:color .2s}
+.flow li::before{content:"";flex:0 0 26px;height:26px;border:3px solid #b9bec8;background:var(--white);
+  display:grid;place-items:center;font:800 16px/1 var(--body);color:var(--white);transition:background .2s,border-color .2s}
+.flow li.done{color:var(--navy)}
+.flow li.done::before{background:var(--navy) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath d='M4 10.5l4 4 8-9' fill='none' stroke='%23FE9D47' stroke-width='3.4' stroke-linecap='square'/%3E%3C/svg%3E") center/16px no-repeat;border-color:var(--navy)}
+.stamp{display:inline-block;margin:18px 0 0 !important;padding:8px 12px;font:800 20px/1 var(--display) !important;font-stretch:75%;letter-spacing:.02em;text-transform:uppercase;
+  color:var(--navy) !important;border:3px solid var(--navy);background:var(--paper);transform:rotate(-3deg)}
+.card:nth-child(odd) .stamp{background:#ffe3c9}
+.card:nth-child(even) .stamp{background:#d3efff}
+
+.approve{margin:72px 0 0;font:800 clamp(40px,11.2vw,112px)/.92 var(--display);font-stretch:75%;letter-spacing:0;text-wrap:balance}
+
+/* ---------- quote ---------- */
+.blue blockquote{margin:0}
+.blue .mega{font-size:clamp(46px,13.4vw,136px)}
+.cite{display:block;margin-top:28px;font:700 18px/1.4 var(--body)}
+.cite span{display:block;font-weight:500}
+
+/* ---------- close + footer ---------- */
+.close .body{color:var(--navy);font-weight:500;font-size:19px}
+.close .ctas{margin-top:34px}
+.close .btn-navy{min-height:60px;font-size:18px;padding:0 24px}
+.close .btn-navy .lk{width:30px;height:18px}
+.foot{background:var(--navy);color:#e4e7ee;padding:26px 0 30px;font-size:16px}
+.foot .wrap{display:flex;flex-wrap:wrap;align-items:center;gap:6px 14px}
+.foot img{width:150px}
+.foot a{display:inline-flex;align-items:center;min-height:44px}
+
+/* ---------- larger screens ---------- */
+@media (min-width:700px){
+  :root{--pad:48px}
+  .top{padding:0 28px}
+  .brand img{width:200px}
+  .answer{padding:30px 30px 30px}
+  .cards{grid-template-columns:1fr 1fr}
+  .rows{grid-template-columns:1fr 1fr;column-gap:40px}
+  .rows li:nth-last-child(2){border-bottom:3px solid #2a3140}
+}
+@media (min-width:1000px){
+  :root{--pad:64px;--hdr:72px}
+  .top{padding:0 40px}
+  .s{padding:150px 0}
+  .hero{padding-top:84px}
+  h1.mega{font-size:min(8.8vw,150px);max-width:none}
+  h2.mega,.blue .mega{font-size:min(8.4vw,128px)}
+  .lede{font-size:21px}
+  .hero-link{display:block;position:absolute;right:-30px;bottom:110px;width:400px;z-index:1;transform:rotate(-24deg)}
+  .hero .wrap{min-height:560px}
+  .search-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:end}
+  .search-grid .body{margin-top:0}
+  .tenone{margin-top:0}
+  .answer{display:grid;grid-template-rows:auto 1fr auto;grid-template-columns:.85fr 1.15fr;gap:10px 44px;padding:36px}
+  .answer .q-label,.answer .qs,.answer .try{grid-column:1}
+  .answer .qs{flex-direction:column;align-items:stretch;align-self:start}
+  .answer .reply{grid-column:2;grid-row:1 / span 3;margin:0}
+  .answer .try{grid-row:3}
+  .agents-head .body{margin-top:32px}
+  .cards{grid-template-columns:repeat(4,1fr);gap:22px}
+  .close-grid{display:grid;grid-template-columns:1.3fr .7fr;gap:56px;align-items:end}
+  .close-grid .body{margin:0}
+}
+</style>
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="#top" aria-label="PremierConnect AI, back to top"><img src="/assets/logo.png" alt="PremierConnect AI" width="1134" height="146"></a>
+  <a class="btn btn-sm" href="https://foundusingai.premierconnectai.com/" target="_blank" rel="noopener">Book a free audit</a>
+</header>
+
+<main>
+<!-- ============ HERO (orange) ============ -->
+<section class="s hero" id="top" data-rail="L">
+  <div class="wrap">
+    <p class="eyebrow">AI search visibility and AI agent teams</p>
+    <h1 class="mega" id="h1" data-split>When customers ask AI who to call, it should say <span class="slot" id="heroSlot"><span class="in">your name.</span></span></h1>
+    <p class="lede hero-fade">People now ask ChatGPT, Google and Perplexity before they ever pick up the phone. PremierConnect AI gets your business named in those answers, then builds AI agents that take the busywork off your team.</p>
+    <div class="ctas hero-fade">
+      <a class="btn btn-navy" href="https://foundusingai.premierconnectai.com/" target="_blank" rel="noopener">Book your free expert audit <span class="arr" aria-hidden="true">&rarr;</span></a>
+      <a class="textlink" href="#how">See how it works</a>
+    </div>
+    <p class="fine hero-fade">Free scan across ChatGPT, Claude, Gemini and Perplexity. Your report goes to your email.</p>
+  </div>
+  <svg class="hero-link" viewBox="0 0 220 110" aria-hidden="true">
+    <rect x="8" y="22" width="120" height="66" rx="33" fill="none" stroke="#07090f" stroke-width="18"/>
+    <rect x="92" y="22" width="120" height="66" rx="33" fill="none" stroke="#02A6FE" stroke-width="18"/>
+    <clipPath id="hlc"><rect x="96" y="0" width="40" height="44"/></clipPath>
+    <rect x="8" y="22" width="120" height="66" rx="33" fill="none" stroke="#07090f" stroke-width="18" clip-path="url(#hlc)"/>
+  </svg>
+  <span class="node" aria-hidden="true"></span>
+</section>
+
+<!-- ============ AI SEARCH (navy) ============ -->
+<section class="s dark" id="how" data-rail="R">
+  <div class="wrap">
+    <p class="eyebrow">AEO and GEO</p>
+    <h2 class="mega" data-split>Search gave ten links. <span class="accent">AI gives one answer.</span></h2>
+
+    <div class="search-grid">
+      <div class="tenone" aria-hidden="true">
+        <div><div class="ten"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div><span class="tn-label">10 links</span></div>
+        <div class="tn-arrow">&rarr;</div>
+        <div class="one"><b>1</b><span>answer</span></div>
+      </div>
+      <p class="body">When someone asks an AI assistant for a recommendation, it names a few businesses and moves on. It picks the ones whose information is clear, consistent and backed up by other sites. Most owners have never checked what AI says about them.</p>
+    </div>
+
+    <div class="answer" id="answer">
+      <p class="q-label">Questions customers ask AI</p>
+      <div class="qs" role="group" aria-label="Pick a question">
+        <button class="q" type="button" data-q="0" aria-pressed="true">&ldquo;Who is the most reliable company for this near me?&rdquo;</button>
+        <button class="q" type="button" data-q="1" aria-pressed="false">&ldquo;Is this business legit?&rdquo;</button>
+        <button class="q" type="button" data-q="2" aria-pressed="false">&ldquo;Who answers fast and shows up on time?&rdquo;</button>
+      </div>
+      <div class="try">
+        <label for="biz">Try it: type your business name</label>
+        <input id="biz" type="text" maxlength="40" autocomplete="organization" placeholder="Your business name" spellcheck="false">
+        <p class="note">Illustration only. Nobody controls what AI says.</p>
+      </div>
+
+      <div class="reply"><span class="tag ai">AI answer</span>
+        <p class="big-a" id="bigA" aria-live="polite">A few names come up: Business A, <span class="slot"><span class="in">your business</span></span> and Business B.</p>
+      </div>
+    </div>
+
+    <h3 class="what">What we do</h3>
+    <ol class="rows">
+      <li><span class="n">01</span><span>Make your site easy for AI to read: who you are, what you do, where you work.</span></li>
+      <li><span class="n">02</span><span>Publish plain answers to the questions your customers ask.</span></li>
+      <li><span class="n">03</span><span>Fix listings and directory info that make AI unsure about you.</span></li>
+      <li><span class="n">04</span><span>Re-test the same questions every month so you can see the change yourself.</span></li>
+    </ol>
+  </div>
+  <span class="node" aria-hidden="true"></span>
+</section>
+
+<!-- ============ AGENTS (paper) ============ -->
+<section class="s paper" id="agents" data-rail="L">
+  <div class="wrap">
+    <p class="eyebrow">AI agent teams</p>
+    <div class="agents-head">
+      <h2 class="mega" data-split>Agents that work <span class="ink-blue">around the clock.</span> People who make the calls.</h2>
+      <p class="body">The audit shows where your team loses hours to repeat work. We build agents for exactly those jobs.</p>
+    </div>
+
+    <div class="cards">
+      <article class="card">
+        <div class="card-top"><span class="num">01</span><span class="when">Sun, 2 a.m.</span></div>
+        <h3>Lead intake</h3>
+        <p>Every inquiry gets logged, qualified and a reply drafted the minute it lands, at 2 a.m. on a Sunday too.</p>
+        <ol class="flow"><li class="done">Inquiry lands</li><li class="done">Logged and qualified</li><li class="done">Reply drafted</li></ol>
+        <p class="stamp">Waiting for a person's OK</p>
+      </article>
+      <article class="card">
+        <div class="card-top"><span class="num">02</span><span class="when">Gone quiet</span></div>
+        <h3>Follow-up</h3>
+        <p>Leads that went quiet get a timely, personal follow-up drafted for your approval.</p>
+        <ol class="flow"><li class="done">Lead goes quiet</li><li class="done">Personal follow-up drafted</li><li class="done">Sent to you to approve</li></ol>
+        <p class="stamp">Waiting for your approval</p>
+      </article>
+      <article class="card">
+        <div class="card-top"><span class="num">03</span><span class="when">Every booking</span></div>
+        <h3>Scheduling and reminders</h3>
+        <p>Confirmations and reminders get drafted on time for every appointment, so fewer people no-show.</p>
+        <ol class="flow"><li class="done">Appointment booked</li><li class="done">Confirmation drafted</li><li class="done">Reminder drafted on time</li></ol>
+        <p class="stamp">Fewer no-shows</p>
+      </article>
+      <article class="card">
+        <div class="card-top"><span class="num">04</span><span class="when">Always current</span></div>
+        <h3>Records that stay current</h3>
+        <p>Your CRM and job notes stay up to date without anyone retyping them.</p>
+        <ol class="flow"><li class="done">Job notes come in</li><li class="done">CRM updated</li><li class="done">Nobody retypes it</li></ol>
+        <p class="stamp">Up to date</p>
+      </article>
+    </div>
+
+    <p class="approve" data-split>Nothing goes out to a customer without <span class="slot alt" id="personSlot"><span class="in">a person</span></span> approving it.</p>
+  </div>
+  <span class="node" aria-hidden="true"></span>
+</section>
+
+<!-- ============ QUOTE (blue) ============ -->
+<section class="s blue" data-rail="R">
+  <div class="wrap">
+    <blockquote>
+      <p class="mega" data-split>&ldquo;I don't replace your team. I make them unstoppable.&rdquo;</p>
+      <footer class="cite">Demetri Panagiotou<span>Founder, PremierConnect AI</span></footer>
+    </blockquote>
+  </div>
+  <span class="node" aria-hidden="true"></span>
+</section>
+
+<!-- ============ CLOSE (orange) ============ -->
+<section class="s close" id="audit" data-rail="L">
+  <div class="wrap">
+    <div class="close-grid">
+      <h2 class="mega" data-split>Find out what AI says about you.</h2>
+      <p class="body">Start with the free audit. We run the test, you keep the report. Based in Austin, Texas, working with businesses anywhere.</p>
+    </div>
+    <div class="ctas">
+      <a class="btn btn-navy" id="endBtn" href="https://foundusingai.premierconnectai.com/" target="_blank" rel="noopener">Book your free expert audit <span class="arr" aria-hidden="true">&rarr;</span></a>
+    </div>
+    <p class="fine">Free scan across ChatGPT, Claude, Gemini and Perplexity. Your report goes to your email.</p>
+  </div>
+</section>
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <img src="/assets/logo-light.png" alt="" width="1134" height="146">
+    <span>PremierConnect AI · Austin, Texas · <a href="mailto:contact@premierconnectai.com">contact@premierconnectai.com</a></span>
+  </div>
+</footer>
+
+<svg id="chain" aria-hidden="true" focusable="false"></svg>
+
+<template id="linkTpl">
+  <svg viewBox="0 0 120 60" aria-hidden="true">
+    <defs><clipPath id="CLIPID"><rect x="52" y="0" width="22" height="30"/></clipPath></defs>
+    <g class="la"><rect x="6" y="15" width="64" height="30" rx="15" fill="none" stroke="#FE9D47" stroke-width="9"/></g>
+    <g class="lb"><rect x="50" y="15" width="64" height="30" rx="15" fill="none" stroke="#02A6FE" stroke-width="9"/></g>
+    <g class="la la2"><rect x="6" y="15" width="64" height="30" rx="15" fill="none" stroke="#FE9D47" stroke-width="9" clip-path="url(#CLIPID)"/></g>
+  </svg>
+</template>
+
+<script src="/assets/vendor/gsap.min.js"></script>
+<script src="/assets/vendor/ScrollTrigger.min.js"></script>
+<script>
+(function () {
+  'use strict';
+  var d = document, root = d.documentElement;
+  var MOTION = !/[?&]motion=0/.test(location.search);
+  var G = MOTION && window.gsap && window.ScrollTrigger;
+  if (G) gsap.registerPlugin(ScrollTrigger);
+  function $(s, c) { return (c || d).querySelector(s); }
+  function $$(s, c) { return Array.prototype.slice.call((c || d).querySelectorAll(s)); }
+
+  /* ---------- seam nodes: build the two-link icon ---------- */
+  var tpl = $('#linkTpl').innerHTML;
+  $$('.node').forEach(function (n, i) { n.innerHTML = tpl.replace(/CLIPID/g, 'lc' + i); });
+
+  /* ---------- split words (text nodes only; child elements stay whole) ---------- */
+  function split(el) {
+    var out = [];
+    Array.prototype.slice.call(el.childNodes).forEach(function (node) {
+      if (node.nodeType === 3) {
+        var parts = node.textContent.split(/(\s+)/);
+        var frag = d.createDocumentFragment();
+        parts.forEach(function (p) {
+          if (!p) return;
+          if (/^\s+$/.test(p)) { frag.appendChild(d.createTextNode(' ')); return; }
+          var s = d.createElement('span'); s.className = 'w'; s.textContent = p; frag.appendChild(s); out.push(s);
+        });
+        node.parentNode.replaceChild(frag, node);
+      } else if (node.nodeType === 1) {
+        if (node.classList.contains('slot')) { out.push(node); }
+        else { out = out.concat(split(node)); }
+      }
+    });
+    return out;
+  }
+
+  /* ---------- the answer demo ---------- */
+  var QUESTIONS = [
+    { q: '“Who is the most reliable company for this near me?”', a: ['A few names come up: Business A, ', ' and Business B.'] },
+    { q: '“Is this business legit?”', a: ['', ' has a clear site and the same details on every listing I checked.'] },
+    { q: '“Who answers fast and shows up on time?”', a: ['Two names come up for fast replies: Business A and ', '.'] }
+  ];
+  var cur = 0, bigA = $('#bigA'), input = $('#biz');
+  function cleanName(v) {
+    return String(v || '').replace(/[\u0000-\u001F\u007F<>]/g, '').replace(/\s+/g, ' ').trim().slice(0, 40);
+  }
+  function renderAnswer(animateAll) {
+    var item = QUESTIONS[cur], name = cleanName(input.value);
+    if (!name) name = item.a[0] === '' ? 'Your business' : 'your business';
+    while (bigA.firstChild) bigA.removeChild(bigA.firstChild);
+    if (item.a[0]) bigA.appendChild(d.createTextNode(item.a[0]));
+    var slot = d.createElement('span'); slot.className = 'slot';
+    var inn = d.createElement('span'); inn.className = 'in'; inn.textContent = name;
+    slot.appendChild(inn); bigA.appendChild(slot);
+    bigA.appendChild(d.createTextNode(item.a[1]));
+    if (!G) return;
+    var ws = split(bigA).filter(function (w) { return w !== slot; });
+    if (animateAll) gsap.from(ws, { y: 18, opacity: 0, duration: .32, stagger: .018, ease: 'power3.out' });
+    snapSlot(slot, animateAll ? .18 : 0);
+  }
+  function snapSlot(slot, delay) {
+    var inn = slot.querySelector('.in');
+    gsap.killTweensOf([slot, inn]);
+    gsap.fromTo(slot, { scaleX: .2, rotation: -9 }, { scaleX: 1, rotation: -2, duration: .55, delay: delay || 0, ease: 'back.out(2.6)' });
+    gsap.fromTo(inn, { yPercent: -110, opacity: 0 }, { yPercent: 0, opacity: 1, duration: .5, delay: (delay || 0) + .12, ease: 'back.out(3)' });
+  }
+  $$('.q').forEach(function (b) {
+    b.addEventListener('click', function () {
+      cur = +b.getAttribute('data-q');
+      $$('.q').forEach(function (x) { x.setAttribute('aria-pressed', x === b ? 'true' : 'false'); });
+      renderAnswer(true);
+    });
+  });
+  var typeT;
+  input.addEventListener('input', function () {
+    clearTimeout(typeT);
+    typeT = setTimeout(function () { renderAnswer(false); }, 260);
+  });
+
+  /* ---------- the chain line ---------- */
+  var NS = 'http://www.w3.org/2000/svg', svg = $('#chain');
+  svg.innerHTML = '<defs><clipPath id="cL"></clipPath><clipPath id="cD"></clipPath></defs>' +
+    '<path class="lnL" clip-path="url(#cL)"/><path class="lnD" clip-path="url(#cD)"/><circle class="head" r="9" cx="-50" cy="-50"/>';
+  var pL = $('.lnL', svg), pD = $('.lnD', svg), head = $('.head', svg);
+  var total = 0, ys = null, xs = null, N = 0, nodes = [], intro = MOTION ? 0 : 1, endBtn = $('#endBtn'), linked = false;
+
+  function rect(clip, x, y, w, h) {
+    var r = d.createElementNS(NS, 'rect');
+    r.setAttribute('x', x); r.setAttribute('y', y); r.setAttribute('width', w); r.setAttribute('height', h);
+    clip.appendChild(r);
+  }
+  function build() {
+    var sy = window.scrollY, W = root.clientWidth;
+    svg.setAttribute('height', 0);
+    var H = Math.ceil($('.foot').getBoundingClientRect().bottom + sy);
+    svg.setAttribute('width', W); svg.setAttribute('height', H);
+    svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+    var cL = $('#cL', svg), cD = $('#cD', svg);
+    cL.innerHTML = ''; cD.innerHTML = '';
+    var secs = $$('main > .s'), pts = [], nodeYs = [];
+    secs.forEach(function (s, i) {
+      var r = s.getBoundingClientRect(), top = r.top + sy, bot = r.bottom + sy;
+      rect(s.classList.contains('dark') ? cD : cL, 0, top - 1, W, bot - top + 2);
+      var wrap = $('.wrap', s), wr = wrap.getBoundingClientRect(), pad = parseFloat(getComputedStyle(wrap).paddingLeft);
+      var x = s.getAttribute('data-rail') === 'R' ? wr.right - pad * .46 : wr.left + pad * .46;
+      var inset = Math.min(70, (bot - top) * .08);
+      pts.push([x, i === 0 ? top + 30 : top + inset]);
+      if (i < secs.length - 1) {
+        pts.push([x, bot - inset]);
+        pts.push([W / 2, bot]);
+        nodeYs.push({ y: bot, el: $('.node', s) });
+      } else {
+        var b = endBtn.getBoundingClientRect(), by = b.top + sy + b.height / 2, bx = b.left;
+        var rr = Math.max(4, Math.min(18, bx - x - 2));
+        pts.push([x, by - rr, 'end', bx, by, rr]);
+      }
+    });
+    var dStr = 'M' + pts[0][0].toFixed(1) + ' ' + pts[0][1].toFixed(1);
+    for (var i = 1; i < pts.length; i++) {
+      var a = pts[i - 1], p = pts[i];
+      if (Math.abs(a[0] - p[0]) < .5) dStr += ' L' + p[0].toFixed(1) + ' ' + p[1].toFixed(1);
+      else {
+        var m = (a[1] + p[1]) / 2;
+        dStr += ' C' + a[0].toFixed(1) + ' ' + m.toFixed(1) + ' ' + p[0].toFixed(1) + ' ' + m.toFixed(1) + ' ' + p[0].toFixed(1) + ' ' + p[1].toFixed(1);
+      }
+      if (p[2] === 'end') {
+        dStr += ' Q' + p[0].toFixed(1) + ' ' + p[4].toFixed(1) + ' ' + (p[0] + p[5]).toFixed(1) + ' ' + p[4].toFixed(1);
+        dStr += ' L' + p[3].toFixed(1) + ' ' + p[4].toFixed(1);
+      }
+    }
+    pL.setAttribute('d', dStr); pD.setAttribute('d', dStr);
+    total = pL.getTotalLength();
+    N = Math.max(50, Math.min(2400, Math.ceil(total / 5)));
+    ys = new Float32Array(N + 1); xs = new Float32Array(N + 1);
+    var mx = -1e9;
+    for (var k = 0; k <= N; k++) {
+      var pt = pL.getPointAtLength(total * k / N);
+      mx = Math.max(mx, pt.y); ys[k] = mx; xs[k] = pt.x;
+    }
+    nodes = nodeYs.map(function (n, idx) {
+      var old = nodes[idx];
+      return { len: lenAtY(n.y), el: n.el, joined: old ? old.joined : !MOTION };
+    });
+    [pL, pD].forEach(function (p) { p.style.strokeDasharray = total + ' ' + (total + 10); });
+    draw();
+  }
+  function idxAtY(y) {
+    var lo = 0, hi = N;
+    if (y <= ys[0]) return 0;
+    if (y >= ys[N]) return N;
+    while (lo < hi) { var mid = (lo + hi + 1) >> 1; if (ys[mid] <= y) lo = mid; else hi = mid - 1; }
+    return lo;
+  }
+  function lenAtY(y) { return total * idxAtY(y) / N; }
+
+  function joinNode(n, on) {
+    n.joined = on;
+    if (!G) return;
+    var a = $$('.la', n.el), b = $('.lb', n.el);
+    gsap.to(a, { x: on ? 0 : -24, rotation: on ? 0 : -18, duration: on ? .6 : .3, ease: on ? 'back.out(3.2)' : 'power2.out', svgOrigin: '38 30' });
+    gsap.to(b, { x: on ? 0 : 24, rotation: on ? 0 : 18, duration: on ? .6 : .3, ease: on ? 'back.out(3.2)' : 'power2.out', svgOrigin: '82 30' });
+    if (on) gsap.fromTo(n.el, { scale: 1.18 }, { scale: 1, duration: .5, ease: 'back.out(3)' });
+  }
+  function draw() {
+    if (!ys) return;
+    var len;
+    if (!MOTION) len = total;
+    else {
+      var vh = window.innerHeight, sy = window.scrollY, max = d.body.scrollHeight - vh;
+      len = sy >= max - 4 ? total : lenAtY(sy + vh * .62);
+      len *= intro;
+    }
+    var off = Math.max(0, total - len);
+    pL.style.strokeDashoffset = off; pD.style.strokeDashoffset = off;
+    if (MOTION && len > 1 && len < total - 1) {
+      var k = Math.min(N, Math.round(len / total * N)), pt = pL.getPointAtLength(len);
+      head.setAttribute('cx', pt.x.toFixed(1)); head.setAttribute('cy', pt.y.toFixed(1));
+      head.style.opacity = 1;
+    } else head.style.opacity = 0;
+    nodes.forEach(function (n) {
+      var on = len >= n.len - 2;
+      if (on !== n.joined) joinNode(n, on);
+    });
+    var isLinked = len >= total - 2;
+    if (isLinked !== linked) {
+      linked = isLinked;
+      if (G && linked) gsap.fromTo(endBtn, { scale: 1.08, rotation: -2 }, { scale: 1, rotation: 0, duration: .6, ease: 'back.out(3.4)' });
+    }
+  }
+
+  if (G) {
+    $$('.node').forEach(function (n) {
+      gsap.set($$('.la', n), { x: -24, rotation: -18, svgOrigin: '38 30' });
+      gsap.set($('.lb', n), { x: 24, rotation: 18, svgOrigin: '82 30' });
+    });
+  }
+
+  var raf = 0;
+  function onScroll() { if (!raf) raf = requestAnimationFrame(function () { raf = 0; draw(); }); }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  var rt;
+  function rebuild() { clearTimeout(rt); rt = setTimeout(function () { build(); if (G) ScrollTrigger.refresh(); }, 120); }
+  window.addEventListener('resize', rebuild);
+  if ('ResizeObserver' in window) new ResizeObserver(rebuild).observe($('main'));
+  build();
+  if (d.fonts && d.fonts.ready) d.fonts.ready.then(rebuild);
+  window.addEventListener('load', rebuild);
+
+  if (!G) return;
+
+  /* ---------- motion ---------- */
+  root.classList.add('m');
+
+  // hero: title card. Words slam in, then the name drops into its slot.
+  var h1 = $('#h1'), heroSlot = $('#heroSlot');
+  var hw = split(h1).filter(function (w) { return w !== heroSlot; });
+  var tl = gsap.timeline({ delay: .1 });
+  tl.from('.hero .eyebrow', { clipPath: 'inset(0 100% 0 0)', duration: .45, ease: 'power3.inOut' })
+    .from(hw, { yPercent: 70, rotation: 5, opacity: 0, duration: .5, stagger: .045, ease: 'back.out(2.2)' }, '-=.15')
+    .fromTo(heroSlot, { scaleX: 0, rotation: -10 }, { scaleX: 1, rotation: -2, duration: .6, ease: 'back.out(2.4)' }, '-=.15')
+    .from($('.in', heroSlot), { yPercent: -120, opacity: 0, duration: .55, ease: 'back.out(3.2)' }, '-=.38')
+    .from('.hero-fade', { y: 22, opacity: 0, duration: .45, stagger: .08, ease: 'power3.out' }, '-=.3')
+    .from('.hero-link', { rotation: -70, xPercent: 40, opacity: 0, duration: .9, ease: 'back.out(1.8)' }, .5);
+  gsap.to({ k: 0 }, { k: 1, duration: 1.5, delay: .2, ease: 'power2.inOut', onUpdate: function () { intro = this.targets()[0].k; draw(); } });
+
+  function onEnter(el, fn, start) {
+    ScrollTrigger.create({ trigger: el, start: start || 'top 82%', once: true, onEnter: fn });
+  }
+
+  // headlines: words pop, slots snap
+  $$('[data-split]').forEach(function (el) {
+    if (el === h1) return;
+    var parts = split(el), slots = parts.filter(function (p) { return p.classList.contains('slot'); });
+    var words = parts.filter(function (p) { return !p.classList.contains('slot'); });
+    gsap.set(words, { yPercent: 60, rotation: 4, opacity: 0 });
+    slots.forEach(function (s) { gsap.set(s, { scaleX: 0 }); gsap.set($('.in', s), { opacity: 0 }); });
+    onEnter(el, function () {
+      gsap.to(words, { yPercent: 0, rotation: 0, opacity: 1, duration: .5, stagger: .04, ease: 'back.out(2.2)' });
+      slots.forEach(function (s) { snapSlot(s, Math.min(.9, words.length * .04)); });
+    }, 'top 86%');
+  });
+  $$('.s:not(.hero) .eyebrow').forEach(function (e) {
+    gsap.set(e, { clipPath: 'inset(0 100% 0 0)' });
+    onEnter(e, function () { gsap.to(e, { clipPath: 'inset(0 0% 0 0)', duration: .45, ease: 'power3.inOut' }); }, 'top 90%');
+  });
+
+  // ten links collapse into one answer
+  var bars = $$('.ten i'), one = $('.one'), arrow = $('.tn-arrow'), label = $('.tn-label');
+  gsap.set(bars, { scaleX: 0, transformOrigin: '0 50%' });
+  gsap.set([one, arrow], { opacity: 0 });
+  onEnter($('.tenone'), function () {
+    var t = gsap.timeline();
+    t.to(bars, { scaleX: 1, duration: .3, stagger: .04, ease: 'power2.out' })
+     .to(arrow, { opacity: 1, x: 0, duration: .2 })
+     .to(bars, { opacity: .22, duration: .35, stagger: { each: .02, from: 'end' } }, '+=.15')
+     .to(bars[0], { opacity: 1, duration: .1 }, '<')
+     .fromTo(one, { scale: .2, rotation: -12, opacity: 0 }, { scale: 1, rotation: -3, opacity: 1, duration: .6, ease: 'back.out(2.6)' }, '-=.2');
+  }, 'top 85%');
+
+  // answer card pops in, then the name snaps into the answer
+  gsap.set('#answer', { y: 40, opacity: 0, rotation: 1.5 });
+  onEnter($('#answer'), function () {
+    gsap.to('#answer', { y: 0, opacity: 1, rotation: 0, duration: .55, ease: 'back.out(1.8)' });
+    var s = $('.slot', bigA); if (s) snapSlot(s, .45);
+  }, 'top 85%');
+
+  // what we do rows
+  $$('.rows li').forEach(function (li) {
+    gsap.set(li, { x: -26, opacity: 0 });
+    onEnter(li, function () {
+      gsap.to(li, { x: 0, opacity: 1, duration: .45, ease: 'back.out(2)' });
+      gsap.from($('.n', li), { scale: .3, rotation: -20, duration: .5, ease: 'back.out(3)', delay: .08 });
+    }, 'top 92%');
+  });
+
+  // agent cards: work arrives, gets worked, waits for a person
+  $$('.card').forEach(function (c, i) {
+    var steps = $$('.flow li', c), stamp = $('.stamp', c);
+    gsap.set(c, { y: 50, opacity: 0, rotation: i % 2 ? 1.5 : -1.5 });
+    steps.forEach(function (li) { li.classList.remove('done'); });
+    gsap.set(stamp, { opacity: 0, scale: 2.2, rotation: -14 });
+    onEnter(c, function () {
+      var t = gsap.timeline({ delay: (window.innerWidth >= 1000 ? i * .1 : 0) });
+      t.to(c, { y: 0, opacity: 1, rotation: 0, duration: .5, ease: 'back.out(1.8)' });
+      steps.forEach(function (li, k) {
+        t.call(function () { li.classList.add('done'); }, null, k ? '+=.08' : '+=.12')
+         .fromTo(li, { x: -6 }, { x: 0, duration: .3, ease: 'back.out(3)' }, '<');
+      });
+      t
+       .to(stamp, { opacity: 1, scale: 1, rotation: -3, duration: .45, ease: 'back.out(2.8)' }, '+=.1');
+    }, 'top 86%');
+  });
+
+  // closing button pops
+  gsap.set('#endBtn', { opacity: 0, y: 24 });
+  onEnter($('#endBtn'), function () { gsap.to('#endBtn', { opacity: 1, y: 0, duration: .45, ease: 'back.out(2.4)' }); }, 'top 95%');
+  gsap.from('.cite', { scrollTrigger: { trigger: '.cite', start: 'top 92%', once: true }, y: 16, opacity: 0, duration: .4, ease: 'power3.out' });
+})();
+</script>
+</body>
+</html>

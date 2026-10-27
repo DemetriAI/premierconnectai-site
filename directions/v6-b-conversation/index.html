@@ -1,0 +1,634 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>AI Search Visibility and AI Agent Teams | PremierConnect AI</title>
+<meta name="description" content="People now ask ChatGPT, Google and Perplexity before they ever pick up the phone. PremierConnect AI gets your business named in those answers, then builds AI agents that take the busywork off your team.">
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#f6f5f2">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700;12..96,800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#07090f; --ink:#0b0f17; --paper:#f6f5f2; --white:#fff;
+  --muted:#5d6573; --line:#e4e1da; --soft:#efede8;
+  --blue:#02A6FE; --blue-ink:#0070b0; --blue-wash:#e9f6ff;
+  --orange:#FE9D47; --orange-ink:#a9560c; --orange-wash:#fff2e5;
+  --disp:"Bricolage Grotesque",ui-sans-serif,system-ui,sans-serif;
+  --body:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;
+  --gut:16px; --bar:60px;
+  --spring:cubic-bezier(.2,1.25,.32,1);
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;overflow-x:clip;scroll-padding-top:calc(var(--bar) + 12px)}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 var(--body);overflow-x:clip;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%}
+a{color:inherit}
+button,input{font:inherit;color:inherit}
+:focus-visible{outline:3px solid var(--blue);outline-offset:3px;border-radius:8px}
+.skip{position:absolute;left:-999px;top:8px;z-index:100;background:#fff;padding:10px 14px;border-radius:8px}
+.skip:focus{left:8px}
+h1,h2,h3{font-family:var(--disp);margin:0;letter-spacing:-.03em}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* ---------- buttons ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:44px;padding:0 18px;border-radius:999px;border:0;cursor:pointer;
+  font:600 15px/1 var(--body);text-decoration:none;white-space:nowrap;transition:transform .2s var(--spring),box-shadow .2s,background .2s}
+.btn-primary{background:var(--ink);color:#fff;box-shadow:0 1px 0 rgba(255,255,255,.12) inset,0 8px 20px -10px rgba(7,9,15,.55)}
+.btn-primary:hover{transform:translateY(-1px);box-shadow:0 1px 0 rgba(255,255,255,.12) inset,0 14px 26px -12px rgba(7,9,15,.6)}
+.btn-primary .dot{width:8px;height:8px;border-radius:50%;background:var(--orange);box-shadow:0 0 0 3px rgba(254,157,71,.25)}
+.btn-lg{min-height:54px;padding:0 24px;font-size:16px}
+.link{display:inline-flex;align-items:center;min-height:44px;font-weight:600;color:var(--blue-ink);text-decoration:none;gap:6px}
+.link:hover{text-decoration:underline;text-underline-offset:4px}
+
+/* ---------- header: becomes the conversation header once you are in the thread ---------- */
+.top{position:sticky;top:0;z-index:50;height:var(--bar);background:rgba(246,245,242,.86);
+  -webkit-backdrop-filter:saturate(1.4) blur(14px);backdrop-filter:saturate(1.4) blur(14px);border-bottom:1px solid transparent;transition:border-color .3s}
+.top.chat{border-bottom-color:var(--line)}
+.bar{height:100%;max-width:1160px;margin:0 auto;padding:0 var(--gut);display:flex;align-items:center;gap:10px}
+.brand{flex:none;display:block;width:156px;height:44px;overflow:hidden;position:relative;transition:width .45s var(--spring)}
+.brand img{position:absolute;left:0;top:12px;height:20px;width:auto;max-width:none}
+.top.chat .brand{width:22px}
+.convo{flex:1;min-width:0;display:flex;flex-direction:column;justify-content:center;line-height:1.2;opacity:0;transform:translateY(8px);transition:opacity .3s,transform .4s var(--spring);pointer-events:none}
+.top.chat .convo{opacity:1;transform:none}
+.convo b{font:700 15px/1.2 var(--disp);letter-spacing:-.01em;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.convo span{font-size:13px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.convo span.typing{color:var(--blue-ink)}
+.top .book{flex:none;margin-left:auto}
+
+/* ---------- hero ---------- */
+.hero{max-width:1160px;margin:0 auto;padding:20px var(--gut) 36px;display:grid;gap:22px}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;margin:0 0 14px;font:600 12px/1.2 var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.eyebrow i{width:8px;height:8px;border-radius:50%;background:var(--orange);box-shadow:10px 0 0 var(--blue);margin-right:12px}
+.hero h1{font-weight:800;font-size:clamp(36px,9.4vw,74px);line-height:1;letter-spacing:-.04em;text-wrap:balance}
+.hero h1 .w{display:inline-block}
+.hero h1 em{font-style:normal;color:var(--blue-ink)}
+.sub{margin:16px 0 0;font-size:17px;line-height:1.55;color:#2d3440;max-width:36em}
+.ctas{display:flex;flex-wrap:wrap;align-items:center;gap:6px 18px;margin-top:20px}
+.fine{margin:10px 0 0;font-size:15px;line-height:1.5;color:var(--muted)}
+
+/* start card (the composer) */
+.start{background:var(--white);border:1px solid var(--line);border-radius:24px;padding:14px;box-shadow:0 24px 50px -34px rgba(7,9,15,.35)}
+.start .pv{display:none}
+.start label{display:flex;align-items:center;gap:8px;font:600 14px/1.3 var(--body);color:var(--ink);margin:2px 4px 10px}
+.start label .av{width:22px;height:22px}
+.field{display:flex;align-items:center;gap:6px;background:var(--paper);border:1.5px solid var(--line);border-radius:999px;padding:5px 5px 5px 16px;transition:border-color .2s,box-shadow .2s}
+.field:focus-within{border-color:var(--blue);box-shadow:0 0 0 4px rgba(2,166,254,.14)}
+.field input{flex:1;min-width:0;border:0;background:transparent;font-size:16px;height:44px;outline:none}
+.field input::placeholder{color:#8a919c}
+.send{flex:none;width:44px;height:44px;border-radius:50%;border:0;background:var(--blue-ink);color:#fff;display:grid;place-items:center;cursor:pointer;transition:transform .2s var(--spring),background .2s}
+.send:hover{background:#005d93;transform:scale(1.05)}
+.send svg{width:20px;height:20px}
+.hint{margin:10px 6px 2px;font-size:15px;color:var(--muted);min-height:21px}
+.hint b{color:var(--ink)}
+
+/* ---------- avatars ---------- */
+.av{flex:none;width:32px;height:32px;border-radius:50%;display:grid;place-items:center;font:700 12px/1 var(--body);color:#fff}
+.av-ai{background:linear-gradient(140deg,#4cc3ff,var(--blue-ink))}
+.av-ai svg{width:56%;height:56%}
+.av-pc{background:#fff;border:1px solid var(--line)}
+.av-pc span{width:18px;height:18px;background:url(/assets/logo.png) no-repeat 0 50%/auto 18px}
+.av-dp{background:var(--orange-ink)}
+.av-ag{border-radius:10px;background:var(--blue-wash);color:var(--blue-ink)}
+.av-ag svg{width:18px;height:18px}
+
+/* ---------- app: rail + thread ---------- */
+.app{max-width:1160px;margin:0 auto;padding:0 var(--gut) 40px}
+.rail{display:none}
+.thread{max-width:680px;margin:0 auto}
+
+.chapter{padding-top:8px}
+.pin{background:var(--white);border:1px solid var(--line);border-radius:24px;padding:22px 20px;margin:28px 0 18px;position:relative}
+.pin .eyebrow{margin-bottom:12px}
+.pin h2{font-weight:800;font-size:clamp(30px,7.6vw,46px);line-height:1.02;letter-spacing:-.035em;text-wrap:balance}
+.pin p{margin:14px 0 0;font-size:16px;color:#2d3440}
+.pin .tag{position:absolute;top:-11px;left:20px;background:var(--ink);color:#fff;font:600 12px/22px var(--body);padding:0 10px;border-radius:999px;letter-spacing:.02em}
+
+.stamp{text-align:center;font:600 13px/1.3 var(--body);color:var(--muted);margin:26px 0 12px}
+.stamp span{display:inline-block;background:var(--soft);padding:5px 12px;border-radius:999px}
+
+/* message rows */
+.m{display:flex;gap:10px;align-items:flex-end;margin:0 0 10px}
+.m .col{min-width:0;max-width:min(88%,560px);display:flex;flex-direction:column}
+.who{font:600 13px/1.3 var(--body);margin:0 0 5px 4px}
+.who.ai{color:var(--blue-ink)} .who.pc{color:var(--orange-ink)}
+.meta{font-size:13px;color:var(--muted);margin:5px 6px 0}
+.bub{position:relative;padding:11px 15px;border-radius:20px;font-size:16px;line-height:1.5;overflow-wrap:anywhere}
+.bub p{margin:0} .bub p+p,.bub p+ul,.bub ul+p{margin-top:8px}
+
+.cust,.owner{justify-content:flex-end}
+.cust .col,.owner .col{align-items:flex-end}
+.cust .bub{background:var(--ink);color:#fff;border-bottom-right-radius:6px}
+.owner .bub{background:var(--ink);color:#fff;border-bottom-right-radius:6px;display:flex;align-items:center;gap:8px;font-weight:600}
+.owner .bub svg{width:18px;height:18px;color:var(--orange)}
+.ai .bub{background:var(--white);border:1px solid var(--line);border-bottom-left-radius:6px}
+.pc .bub{background:var(--orange-wash);border:1px solid #f6dcc2;border-bottom-left-radius:6px}
+
+.name{font-weight:700}
+.biz{font-weight:700;color:var(--blue-ink);background:linear-gradient(transparent 62%,rgba(2,166,254,.22) 62%) no-repeat 0 0/100% 100%;padding:0 2px;border-radius:3px}
+
+/* thinking */
+.think .bub{padding:12px 15px}
+.think ol{list-style:none;margin:0;padding:0;display:grid;gap:8px}
+.think li{display:flex;align-items:center;gap:10px;font-size:16px;color:var(--muted);transition:color .3s}
+.think li i{flex:none;width:18px;height:18px;border-radius:50%;border:2px solid var(--line);display:grid;place-items:center;transition:background .3s,border-color .3s}
+.think li i svg{width:11px;height:11px;color:#fff;opacity:0;transform:scale(.4);transition:opacity .2s,transform .3s var(--spring)}
+.think li.ok{color:var(--ink)}
+.think li.ok i{background:var(--blue-ink);border-color:var(--blue-ink)}
+.think li.ok i svg{opacity:1;transform:none}
+.think .tt{font:600 13px/1 var(--body);color:var(--blue-ink);margin:0 0 10px;display:flex;align-items:center;gap:8px}
+
+.notice{justify-content:center;margin:14px 0}
+.notice .bub{background:transparent;border:1.5px dashed #e3b88f;color:var(--orange-ink);font-size:16px;font-weight:600;padding:8px 14px;border-radius:999px;display:flex;align-items:center;gap:8px;text-align:center}
+.notice .bub i{flex:none;width:8px;height:8px;border-radius:50%;background:var(--orange)}
+
+.qs{list-style:none;margin:10px 0 0;padding:0;display:grid;gap:8px}
+.qs li{background:#fff;border:1px solid #f1d7bd;border-radius:14px;padding:9px 12px;font-size:16px;font-weight:500}
+.todo{list-style:none;margin:10px 0 0;padding:0;display:grid;gap:10px}
+.todo li{display:flex;gap:10px;align-items:flex-start}
+.todo li i{flex:none;margin-top:2px;width:20px;height:20px;border-radius:6px;background:var(--orange-ink);display:grid;place-items:center}
+.todo li i svg{width:12px;height:12px;color:#fff}
+.caption{justify-content:center}
+.caption p{margin:2px auto 0;max-width:30em;text-align:center;font-size:15px;color:var(--muted)}
+
+/* agent cards */
+.agent .col{max-width:min(92%,560px);width:100%}
+.card{background:var(--white);border:1px solid var(--line);border-radius:22px;border-bottom-left-radius:6px;overflow:hidden}
+.card .hd{display:flex;align-items:center;gap:10px;padding:14px 15px 0}
+.card h3{font-size:19px;font-weight:700;letter-spacing:-.02em}
+.card .desc{margin:8px 15px 0;font-size:16px;color:#2d3440}
+.draft{margin:12px 12px 0;background:var(--paper);border-radius:14px;padding:11px 13px;font-size:16px;line-height:1.5}
+.draft small{display:block;font:600 12px/1.3 var(--body);color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px}
+.draft ul{margin:0;padding:0 0 0 18px}
+.ft{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:12px 12px 12px 15px;flex-wrap:wrap}
+.chip{display:inline-flex;align-items:center;gap:7px;font:600 14px/1.2 var(--body);color:var(--orange-ink)}
+.chip i{width:9px;height:9px;border-radius:50%;background:var(--orange);box-shadow:0 0 0 0 rgba(254,157,71,.6)}
+.chip.ok{color:var(--blue-ink)} .chip.ok i{background:var(--blue-ink)}
+.okb{min-height:44px;padding:0 20px;border-radius:999px;border:0;background:var(--ink);color:#fff;font:600 15px/1 var(--body);cursor:pointer;transition:transform .2s var(--spring),background .2s,opacity .2s}
+.okb:hover{transform:scale(1.04)}
+.okb[disabled]{background:var(--blue-wash);color:var(--blue-ink);cursor:default;transform:none}
+
+/* quote */
+.quote .bub{font:600 20px/1.35 var(--disp);letter-spacing:-.01em;padding:14px 17px}
+.quote .bub q{quotes:"\201C" "\201D"}
+
+/* closing */
+.close .pin{background:var(--ink);color:#fff;border-color:var(--ink)}
+.close .pin p{color:#d5d9e0}
+.close .pin .btn-primary{background:var(--orange);color:var(--navy);margin-top:20px}
+.close .pin .btn-primary .dot{background:var(--navy);box-shadow:none}
+.close .pin .fine{color:#aab2bf}
+.foot{border-top:1px solid var(--line);padding:12px var(--gut) 18px;text-align:center;font-size:14px;color:var(--muted)}
+.foot a{color:inherit;display:inline-block;padding:12px 0}
+
+/* dots */
+.dots{display:none;gap:4px;padding:4px 2px}
+.dots i{width:7px;height:7px;border-radius:50%;background:#a8b0bb;animation:dot 1s infinite}
+.dots i:nth-child(2){animation-delay:.15s}.dots i:nth-child(3){animation-delay:.3s}
+@keyframes dot{0%,60%,100%{transform:none;opacity:.5}30%{transform:translateY(-4px);opacity:1}}
+
+/* ---------- motion layer (only with JS and without ?motion=0) ---------- */
+.stamp.m{justify-content:center;margin:26px 0 12px}
+.mo .thread .m:not(.in){pointer-events:none}
+.mo .thread .m{opacity:0;transform:translateY(16px) scale(.96);transform-origin:0 100%}
+.mo .thread .m.cust,.mo .thread .m.owner{transform-origin:100% 100%}
+.mo .thread .m.in{opacity:1;transform:none;transition:opacity .28s ease-out,transform .5s var(--spring)}
+.mo .thread .m.typing .body{display:none}
+.mo .thread .m.typing .dots{display:flex}
+.mo .thread .m.in.done .body{animation:fadeIn .35s ease-out}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.mo .thread .m.in .biz{animation:mark .8s .25s both ease-out}
+@keyframes mark{from{background-size:0 100%}to{background-size:100% 100%}}
+.mo .todo li{opacity:0;transform:translateX(-8px)}
+.mo .m.done .todo li{opacity:1;transform:none;transition:opacity .3s,transform .4s var(--spring)}
+.mo .m.done .todo li:nth-child(2){transition-delay:.18s}.mo .m.done .todo li:nth-child(3){transition-delay:.36s}.mo .m.done .todo li:nth-child(4){transition-delay:.54s}
+.mo .m.done .qs li{animation:pop .45s var(--spring) both}
+.mo .m.done .qs li:nth-child(2){animation-delay:.12s}.mo .m.done .qs li:nth-child(3){animation-delay:.24s}
+@keyframes pop{from{opacity:0;transform:translateY(6px) scale(.97)}to{opacity:1;transform:none}}
+.mo .think:not(.in) li{color:var(--muted)}
+.mo .chip.wait i{animation:pulse 1.4s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(254,157,71,.55)}100%{box-shadow:0 0 0 9px rgba(254,157,71,0)}}
+.mo .card .draft .txt.fill{animation:fadeIn .5s ease-out}
+.mo .hero h1 .w{opacity:0;transform:translateY(.35em);animation:rise .6s var(--spring) forwards}
+@keyframes rise{to{opacity:1;transform:none}}
+.mo .hero .sub,.mo .hero .start,.mo .hero .ctas,.mo .hero .fine{animation:fadeUp .6s .45s both ease-out}
+.mo .hero .start{animation-delay:.6s}
+@keyframes fadeUp{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+.flash{animation:flash .9s ease-out}
+@keyframes flash{0%{box-shadow:0 0 0 0 rgba(2,166,254,.45)}100%{box-shadow:0 0 0 14px rgba(2,166,254,0)}}
+
+/* ---------- desktop ---------- */
+@media (min-width:900px){
+  :root{--gut:32px;--bar:68px}
+  .brand{width:186px} .brand img{height:24px;top:10px}
+  .top.chat .brand{width:26px}
+  .convo b{font-size:16px}
+  .hero{grid-template-columns:1.15fr .85fr;align-items:center;gap:56px;padding:56px var(--gut) 72px}
+  .sub{font-size:19px}
+  .start{padding:18px;border-radius:28px}
+  .start .pv{display:block;margin:0 0 16px;padding:4px 2px 16px;border-bottom:1px solid var(--line)}
+  .pv .m{margin-bottom:8px}
+  .pv .cust .bub{min-height:46px}
+  .pv .caret{display:inline-block;width:2px;height:1em;background:#fff;vertical-align:-2px;margin-left:2px;animation:blink 1s steps(1) infinite}
+  @keyframes blink{50%{opacity:0}}
+  .app{display:grid;grid-template-columns:280px minmax(0,1fr);gap:48px;align-items:start}
+  .thread{margin:0;max-width:700px}
+  .rail{display:block;position:sticky;top:calc(var(--bar) + 24px);background:var(--white);border:1px solid var(--line);border-radius:24px;padding:10px;margin-top:28px}
+  .rail h2{font:600 12px/1 var(--body);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:10px 12px 12px}
+  .rail a{display:flex;gap:12px;align-items:center;padding:10px 12px;border-radius:16px;text-decoration:none;min-height:60px;transition:background .2s}
+  .rail a:hover{background:var(--paper)}
+  .rail a.on{background:var(--blue-wash)}
+  .rail .tx{flex:1;min-width:0;line-height:1.3}
+  .rail .tx b{display:block;font:700 15px/1.25 var(--disp)}
+  .rail .tx span{display:block;font-size:13px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .rail .n{flex:none;min-width:22px;height:22px;padding:0 7px;border-radius:999px;background:var(--blue-ink);color:#fff;font:700 12px/22px var(--body);text-align:center;transition:opacity .3s,transform .3s var(--spring)}
+  .rail .n.zero{opacity:0;transform:scale(.5)}
+  .rail .fine{margin:6px 12px 10px}
+  .pin{padding:30px 30px 28px}
+  .pin .tag{left:30px}
+  .quote .bub{font-size:24px}
+}
+@media (min-width:1200px){ .hero h1{font-size:76px} }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="top" id="topbar">
+  <div class="bar">
+    <a class="brand" href="#top" aria-label="PremierConnect AI, back to top"><img src="/assets/logo.png" alt="PremierConnect AI" width="1134" height="146"></a>
+    <div class="convo" aria-hidden="true"><b id="ctTitle">Who should I call?</b><span id="ctStatus">Customer asks AI</span></div>
+    <a class="btn btn-primary book" href="https://foundusingai.premierconnectai.com/" target="_blank" rel="noopener">Book a free audit</a>
+  </div>
+</header>
+
+<main id="main">
+<section class="hero" id="top" aria-labelledby="h1">
+  <div>
+    <p class="eyebrow"><i aria-hidden="true"></i>AI search visibility and AI agent teams</p>
+    <h1 id="h1">When customers ask AI who to call, it should say your name.</h1>
+    <p class="sub">People now ask ChatGPT, Google and Perplexity before they ever pick up the phone. PremierConnect AI gets your business named in those answers, then builds AI agents that take the busywork off your team.</p>
+  </div>
+  <div>
+    <form class="start" id="startForm" autocomplete="off">
+      <div class="pv" aria-hidden="true">
+        <div class="m cust"><div class="col"><div class="bub"><span id="pvType">Who is the most reliable company for this near me?</span><span class="caret"></span></div></div></div>
+        <div class="m ai"><span class="av av-ai"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.2 6.3L20.5 10l-6.3 2.2L12 18.5l-2.2-6.3L3.5 10l6.3-1.7z"/></svg></span><div class="col"><div class="bub"><span class="dots" style="display:flex"><i></i><i></i><i></i></span></div></div></div>
+      </div>
+      <label for="biz"><span class="av av-ai" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.2 6.3L20.5 10l-6.3 2.2L12 18.5l-2.2-6.3L3.5 10l6.3-1.7z"/></svg></span>Type your business name, then scroll.</label>
+      <div class="field">
+        <input id="biz" name="biz" type="text" maxlength="40" placeholder="Your business name" enterkeyhint="go" spellcheck="false">
+        <button class="send" type="submit" aria-label="Start the conversation"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></button>
+      </div>
+      <p class="hint" id="hint" aria-live="polite">We will use it in the AI answers below. Skip it and we use “Your Business”.</p>
+    </form>
+    <div class="ctas">
+      <a class="btn btn-primary btn-lg" href="https://foundusingai.premierconnectai.com/" target="_blank" rel="noopener"><span class="dot" aria-hidden="true"></span>Book your free expert audit</a>
+      <a class="link" href="#how">See how it works <span aria-hidden="true">↓</span></a>
+    </div>
+    <p class="fine">Free scan across ChatGPT, Claude, Gemini and Perplexity. Your report goes to your email.</p>
+  </div>
+</section>
+
+<div class="app" id="how">
+  <nav class="rail" aria-label="Sections">
+    <h2>Conversations</h2>
+    <a href="#search" data-ch="search"><span class="av av-ai" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.2 6.3L20.5 10l-6.3 2.2L12 18.5l-2.2-6.3L3.5 10l6.3-1.7z"/></svg></span><span class="tx"><b>Who should I call?</b><span>A customer asks AI</span></span><span class="n" aria-hidden="true"></span></a>
+    <a href="#agents" data-ch="agents"><span class="av av-ag" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="4" y="7" width="16" height="12" rx="4"/><path d="M12 3v4M9 13h.01M15 13h.01"/></svg></span><span class="tx"><b>Your agent team</b><span>Drafts for your OK</span></span><span class="n" aria-hidden="true"></span></a>
+    <a href="#audit" data-ch="audit"><span class="av av-pc" aria-hidden="true"><span></span></span><span class="tx"><b>Free expert audit</b><span>PremierConnect AI</span></span><span class="n" aria-hidden="true"></span></a>
+    <p class="fine">Messages arrive as you scroll.</p>
+  </nav>
+
+  <div class="thread">
+    <!-- ===== AI search ===== -->
+    <section class="chapter" id="search" data-title="Who should I call?" data-status="Customer asks AI" aria-labelledby="h-search">
+      <div class="pin">
+        <span class="tag">Pinned</span>
+        <p class="eyebrow"><i aria-hidden="true"></i>AEO and GEO</p>
+        <h2 id="h-search">Search gave ten links. AI gives one answer.</h2>
+        <p>When someone asks an AI assistant for a recommendation, it names a few businesses and moves on. It picks the ones whose information is clear, consistent and backed up by other sites. Most owners have never checked what AI says about them.</p>
+      </div>
+
+      <p class="stamp m"><span>A customer asks an AI assistant</span></p>
+      <div class="m cust"><div class="col"><div class="bub"><p>Who is the most reliable company for this near me?</p></div><span class="meta">Customer</span></div></div>
+
+      <div class="m ai think" data-who="AI assistant">
+        <span class="av av-ai" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.2 6.3L20.5 10l-6.3 2.2L12 18.5l-2.2-6.3L3.5 10l6.3-1.7z"/></svg></span>
+        <div class="col"><span class="who ai">AI assistant</span><div class="bub">
+          <p class="tt">Thinking</p>
+          <ol>
+            <li class="ok"><i><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M2.5 6.2l2.3 2.3 4.7-5"/></svg></i>Whose information is clear?</li>
+            <li class="ok"><i><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M2.5 6.2l2.3 2.3 4.7-5"/></svg></i>Is it consistent everywhere?</li>
+            <li class="ok"><i><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M2.5 6.2l2.3 2.3 4.7-5"/></svg></i>Is it backed up by other sites?</li>
+          </ol>
+        </div></div>
+      </div>
+
+      <div class="m ai" data-type="1" data-who="AI assistant">
+        <span class="av av-ai" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.2 6.3L20.5 10l-6.3 2.2L12 18.5l-2.2-6.3L3.5 10l6.3-1.7z"/></svg></span>
+        <div class="col"><span class="who ai">AI assistant</span><div class="bub"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><div class="body">
+          <p>A few names come up: <span class="name">Business A</span>, <span class="name">Business B</span> and <span class="name">Business C</span>. Their information is clear, consistent and backed up by other sites.</p>
+        </div></div></div>
+      </div>
+
+      <div class="m notice"><div class="bub"><i aria-hidden="true"></i><span><span class="bizt">Your Business</span> was not in the answer.</span></div></div>
+
+      <div class="m pc" data-type="1" data-who="PremierConnect AI">
+        <span class="av av-pc" aria-hidden="true"><span></span></span>
+        <div class="col"><span class="who pc">PremierConnect AI</span><div class="bub"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><div class="body">
+          <p>Most owners have never checked what AI says about them. Your customers are already asking it questions like these:</p>
+          <ul class="qs" aria-label="Questions customers ask AI">
+            <li>“Who is the most reliable company for this near me?”</li>
+            <li>“Is this business legit?”</li>
+            <li>“Who answers fast and shows up on time?”</li>
+          </ul>
+        </div></div></div>
+      </div>
+
+      <div class="m pc" data-type="1" data-who="PremierConnect AI">
+        <span class="av av-pc" aria-hidden="true"><span></span></span>
+        <div class="col"><div class="bub"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><div class="body">
+          <p>Here is what we do:</p>
+          <ul class="todo">
+            <li><i aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M2.5 6.2l2.3 2.3 4.7-5"/></svg></i><span>Make your site easy for AI to read: who you are, what you do, where you work.</span></li>
+            <li><i aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M2.5 6.2l2.3 2.3 4.7-5"/></svg></i><span>Publish plain answers to the questions your customers ask.</span></li>
+            <li><i aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M2.5 6.2l2.3 2.3 4.7-5"/></svg></i><span>Fix listings and directory info that make AI unsure about you.</span></li>
+            <li><i aria-hidden="true"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M2.5 6.2l2.3 2.3 4.7-5"/></svg></i><span>Re-test the same questions every month so you can see the change yourself.</span></li>
+          </ul>
+        </div></div></div>
+      </div>
+
+      <p class="stamp m"><span>The monthly re-test: same question</span></p>
+      <div class="m cust"><div class="col"><div class="bub"><p>Who is the most reliable company for this near me?</p></div><span class="meta">Customer</span></div></div>
+
+      <div class="m ai" data-type="1" data-who="AI assistant">
+        <span class="av av-ai" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.2 6.3L20.5 10l-6.3 2.2L12 18.5l-2.2-6.3L3.5 10l6.3-1.7z"/></svg></span>
+        <div class="col"><span class="who ai">AI assistant</span><div class="bub"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><div class="body">
+          <p>A few names come up: <span class="name">Business A</span>, <span class="biz">Your Business</span> and <span class="name">Business B</span>. Their information is clear, consistent and backed up by other sites.</p>
+        </div></div></div>
+      </div>
+      <div class="m caption"><p>An example, not a promise. Nobody controls AI answers. The monthly re-test shows you what actually changed.</p></div>
+    </section>
+
+    <!-- ===== Agents ===== -->
+    <section class="chapter" id="agents" data-title="Your agent team" data-status="Agents draft, you approve" aria-labelledby="h-agents">
+      <div class="pin">
+        <span class="tag">Pinned</span>
+        <p class="eyebrow"><i aria-hidden="true"></i>AI agent teams</p>
+        <h2 id="h-agents">Agents that work around the clock. People who make the calls.</h2>
+        <p>The audit shows where your team loses hours to repeat work. We build agents for exactly those jobs. Nothing goes out to a customer without a person approving it.</p>
+      </div>
+
+      <p class="stamp m"><span>Sunday, 2:04 a.m.</span></p>
+      <div class="m agent" data-type="1" data-card="1" data-who="Lead intake agent" id="c1">
+        <span class="av av-ag" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 13h4l1.5 3h5L16 13h4M5.5 6h13L20 13v5a1 1 0 01-1 1H5a1 1 0 01-1-1v-5z"/></svg></span>
+        <div class="col"><span class="who ai">Lead intake agent</span><article class="card">
+          <div class="hd"><h3>Lead intake</h3></div>
+          <p class="desc">Every inquiry gets logged, qualified and a reply drafted the minute it lands, at 2 a.m. on a Sunday too.</p>
+          <div class="draft"><small>Reply drafted</small><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="txt body">Hi, thanks for reaching out to <span class="biz">Your Business</span>. We got your message. What time works for a quick call?</span></div>
+          <div class="ft"><span class="chip wait" role="status"><i aria-hidden="true"></i><span class="cl">Waiting for your OK</span></span><button class="okb" type="button">Approve</button></div>
+        </article></div>
+      </div>
+      <div class="m owner" data-for="c1"><div class="col"><div class="bub"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Approved</div><span class="meta">You, Monday 7:10 a.m.</span></div></div>
+
+      <p class="stamp m"><span>Tuesday</span></p>
+      <div class="m agent" data-type="1" data-card="1" data-who="Follow-up agent" id="c2">
+        <span class="av av-ag" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 12a8 8 0 11-2.3-5.6M20 4v5h-5"/></svg></span>
+        <div class="col"><span class="who ai">Follow-up agent</span><article class="card">
+          <div class="hd"><h3>Follow-up</h3></div>
+          <p class="desc">Leads that went quiet get a timely, personal follow-up drafted for your approval.</p>
+          <div class="draft"><small>Follow-up drafted</small><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="txt body">Hi, just checking in on your quote from <span class="biz">Your Business</span>. Any questions I can answer?</span></div>
+          <div class="ft"><span class="chip wait" role="status"><i aria-hidden="true"></i><span class="cl">Waiting for your OK</span></span><button class="okb" type="button">Approve</button></div>
+        </article></div>
+      </div>
+      <div class="m owner" data-for="c2"><div class="col"><div class="bub"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Approved</div><span class="meta">You</span></div></div>
+
+      <p class="stamp m"><span>Wednesday</span></p>
+      <div class="m agent" data-type="1" data-card="1" data-who="Scheduling agent" id="c3">
+        <span class="av av-ag" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="5" width="16" height="15" rx="3"/><path d="M8 3v4M16 3v4M4 10h16"/></svg></span>
+        <div class="col"><span class="who ai">Scheduling agent</span><article class="card">
+          <div class="hd"><h3>Scheduling and reminders</h3></div>
+          <p class="desc">Confirmations and reminders get drafted on time for every appointment, so fewer people no-show.</p>
+          <div class="draft"><small>Reminder drafted</small><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><span class="txt body">Reminder: your appointment with <span class="biz">Your Business</span> is tomorrow at 9 a.m. Reply YES to confirm.</span></div>
+          <div class="ft"><span class="chip wait" role="status"><i aria-hidden="true"></i><span class="cl">Waiting for your OK</span></span><button class="okb" type="button">Approve</button></div>
+        </article></div>
+      </div>
+      <div class="m owner" data-for="c3"><div class="col"><div class="bub"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Approved</div><span class="meta">You</span></div></div>
+
+      <p class="stamp m"><span>After every call</span></p>
+      <div class="m agent" data-type="1" data-who="Records agent" id="c4">
+        <span class="av av-ag" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 3h7l5 5v12a1 1 0 01-1 1H7a1 1 0 01-1-1V4a1 1 0 011-1zM14 3v5h5M9 13h6M9 17h6"/></svg></span>
+        <div class="col"><span class="who ai">Records agent</span><article class="card">
+          <div class="hd"><h3>Records that stay current</h3></div>
+          <p class="desc">Your CRM and job notes stay up to date without anyone retyping them.</p>
+          <div class="draft"><small>CRM updated</small><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><ul class="txt body"><li>Contact marked as booked</li><li>Job notes added from the call</li></ul></div>
+          <div class="ft"><span class="chip ok"><i aria-hidden="true"></i>Updated. Nothing sent to a customer.</span></div>
+        </article></div>
+      </div>
+
+      <div class="m pc quote" data-who="Demetri">
+        <span class="av av-dp" aria-hidden="true">DP</span>
+        <div class="col"><span class="who pc">Demetri Panagiotou, founder</span><blockquote class="bub" style="margin:0"><q>I don’t replace your team. I make them unstoppable.</q></blockquote></div>
+      </div>
+    </section>
+
+    <!-- ===== Closing ===== -->
+    <section class="chapter close" id="audit" data-title="Free expert audit" data-status="PremierConnect AI" aria-labelledby="h-close">
+      <div class="m pc" data-type="1" data-who="PremierConnect AI">
+        <span class="av av-pc" aria-hidden="true"><span></span></span>
+        <div class="col"><span class="who pc">PremierConnect AI</span><div class="bub"><span class="dots" aria-hidden="true"><i></i><i></i><i></i></span><div class="body"><p>So, what does AI say about <span class="biz">Your Business</span> today?</p></div></div></div>
+      </div>
+      <div class="pin">
+        <h2 id="h-close">Find out what AI says about you.</h2>
+        <p>Start with the free audit. We run the test, you keep the report. Based in Austin, Texas, working with businesses anywhere.</p>
+        <a class="btn btn-primary btn-lg" href="https://foundusingai.premierconnectai.com/" target="_blank" rel="noopener"><span class="dot" aria-hidden="true"></span>Book your free expert audit</a>
+        <p class="fine">Free scan across ChatGPT, Claude, Gemini and Perplexity. Your report goes to your email.</p>
+      </div>
+    </section>
+  </div>
+</div>
+</main>
+
+<footer class="foot">PremierConnect AI · Austin, Texas · <a href="mailto:contact@premierconnectai.com">contact@premierconnectai.com</a></footer>
+
+<script>
+(function(){
+  'use strict';
+  var root=document.documentElement;
+  var motion=!/[?&]motion=0(&|$)/.test(location.search);
+  root.classList.add(motion?'mo':'nomo');
+
+  /* ---------- the business name: text only, never HTML ---------- */
+  var DEFAULT='Your Business';
+  var input=document.getElementById('biz'), form=document.getElementById('startForm'), hint=document.getElementById('hint');
+  function clean(v){return String(v||'').replace(/[\u0000-\u001f\u007f<>{}]/g,'').replace(/\s+/g,' ').trim().slice(0,40);}
+  function setName(v){
+    var n=clean(v)||DEFAULT;
+    var els=document.querySelectorAll('.biz,.bizt');
+    for(var i=0;i<els.length;i++) els[i].textContent=n;
+    return n;
+  }
+  try{var saved=sessionStorage.getItem('pc-biz'); if(saved){input.value=clean(saved); setName(saved);}}catch(e){}
+  input.addEventListener('input',function(){setName(input.value)});
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var n=setName(input.value);
+    try{sessionStorage.setItem('pc-biz',clean(input.value))}catch(err){}
+    hint.textContent='';
+    var b=document.createElement('b'); b.textContent=n;
+    hint.appendChild(document.createTextNode('Got it. Watch for ')); hint.appendChild(b); hint.appendChild(document.createTextNode(' in the answers below.'));
+    input.blur();
+    var t=document.getElementById('search');
+    window.scrollTo({top:t.getBoundingClientRect().top+window.pageYOffset-(window.innerWidth>=900?68:60)-8,behavior:motion?'smooth':'auto'});
+  });
+
+  var bar=document.getElementById('topbar'), app=document.getElementById('how');
+  var ctTitle=document.getElementById('ctTitle'), ctStatus=document.getElementById('ctStatus');
+  var chapters=[].slice.call(document.querySelectorAll('.chapter'));
+  var railLinks=[].slice.call(document.querySelectorAll('.rail a[data-ch]'));
+  var msgs=[].slice.call(document.querySelectorAll('.thread .m'));
+  var thinks=[].slice.call(document.querySelectorAll('.think'));
+
+  function approve(card,instant){
+    if(!card||card.classList.contains('approved'))return;
+    card.classList.add('approved');
+    var chip=card.querySelector('.chip'), cl=card.querySelector('.cl'), btn=card.querySelector('.okb');
+    if(chip){chip.classList.remove('wait');chip.classList.add('ok');}
+    if(cl) cl.textContent='Approved and sent';
+    if(btn){btn.disabled=true;btn.hidden=true;}
+    if(!instant&&motion){var c=card.querySelector('.card');c.classList.remove('flash');void c.offsetWidth;c.classList.add('flash');}
+  }
+
+  if(!motion){
+    msgs.forEach(function(m){m.classList.add('in','done')});
+    document.querySelectorAll('.m.owner[data-for]').forEach(function(o){approve(document.getElementById(o.getAttribute('data-for')),true)});
+  } else {
+    /* thinking steps start unticked; scroll ticks them */
+    thinks.forEach(function(t){[].forEach.call(t.querySelectorAll('li'),function(li){li.classList.remove('ok')})});
+    /* drafts and AI replies start in the "typing" state when they arrive */
+  }
+
+  /* ---------- hero entrance: words rise, desktop preview types ---------- */
+  if(motion){
+    var h1=document.getElementById('h1'), words=h1.textContent.split(' ');
+    h1.textContent='';
+    words.forEach(function(w,i){
+      var s=document.createElement(/name\.$/.test(w)||w==='your'?'em':'span');
+      s.className='w'; s.textContent=w; s.style.animationDelay=(i*0.045)+'s';
+      h1.appendChild(s); if(i<words.length-1) h1.appendChild(document.createTextNode(' '));
+    });
+    var pv=document.getElementById('pvType');
+    if(pv&&window.innerWidth>=900){
+      var full=pv.textContent, k=0; pv.textContent='';
+      setTimeout(function step(){k++; pv.textContent=full.slice(0,k); if(k<full.length) setTimeout(step,28);},900);
+    }
+    /* placeholder types itself so the input reads as the thing to do */
+    var ph='Your business name', p=0; input.setAttribute('placeholder','');
+    setTimeout(function step(){p++; input.setAttribute('placeholder',ph.slice(0,p)); if(p<ph.length) setTimeout(step,55);},1000);
+  }
+
+  /* ---------- scroll engine ---------- */
+  var typingNow=null;
+  function reveal(m,instant){
+    m.classList.add('in');
+    var owner=m.getAttribute('data-for');
+    if(owner) approve(document.getElementById(owner),instant);
+    if(m.classList.contains('think')) [].forEach.call(m.querySelectorAll('li'),function(li){ if(instant) li.classList.add('ok'); });
+    var cl=m.querySelector('.cl'), chip=m.querySelector('.chip');
+    if(m.getAttribute('data-type')&&!instant){
+      m.classList.add('typing'); typingNow=m;
+      if(cl&&!m.classList.contains('approved')){cl.textContent='Drafting…'; chip.classList.remove('wait');}
+      status();
+      setTimeout(function(){
+        m.classList.remove('typing'); m.classList.add('done'); if(typingNow===m) typingNow=null;
+        if(cl&&!m.classList.contains('approved')){cl.textContent='Waiting for your OK'; chip.classList.add('wait');}
+        schedule();
+      }, m.getAttribute('data-card')?900:650);
+    } else { m.classList.add('done'); }
+  }
+  function gate(m,i,vh){
+    var prev=msgs[i-1];
+    if(m.getAttribute('data-for')){
+      /* the person approves once the draft has been read */
+      var card=document.getElementById(m.getAttribute('data-for'));
+      if(!card.classList.contains('done')) return false;
+      var r=card.getBoundingClientRect();
+      return r.top<vh*0.5||r.bottom<vh*0.72;
+    }
+    if(prev&&prev.classList.contains('think')) return prev.getAttribute('data-complete')==='1';
+    return true;
+  }
+  function tickThink(t,vh){
+    if(!t.classList.contains('in')) return;
+    var lis=t.querySelectorAll('li'), r=t.getBoundingClientRect(), all=true;
+    for(var j=0;j<lis.length;j++){
+      if(r.top<vh*(0.74-0.09*j)||r.bottom<vh*0.3) lis[j].classList.add('ok');
+      if(!lis[j].classList.contains('ok')) all=false;
+    }
+    if(all&&t.getAttribute('data-complete')!=='1'){t.setAttribute('data-complete','1'); var tt=t.querySelector('.tt'); if(tt) tt.textContent='Done thinking';}
+  }
+  function status(){
+    var vh=window.innerHeight, cur=null;
+    for(var i=0;i<chapters.length;i++){ if(chapters[i].getBoundingClientRect().top<vh*0.45) cur=chapters[i]; }
+    if(!cur) cur=chapters[0];
+    ctTitle.textContent=cur.getAttribute('data-title');
+    var s=cur.getAttribute('data-status'), typing=false;
+    if(typingNow&&cur.contains(typingNow)){ s=typingNow.getAttribute('data-who')+' is typing…'; typing=true; }
+    else if(cur.id==='agents'){
+      var waiting=cur.querySelectorAll('.m.agent.in[data-card]:not(.approved)').length;
+      if(waiting) s=waiting+(waiting>1?' drafts need':' draft needs')+' your OK';
+      else if(cur.querySelectorAll('.approved').length) s='All drafts approved';
+    }
+    if(ctStatus.textContent!==s) ctStatus.textContent=s;
+    ctStatus.className=typing?'typing':'';
+    railLinks.forEach(function(a){
+      var ch=document.getElementById(a.getAttribute('data-ch'));
+      a.classList.toggle('on',ch===cur);
+      var left=ch.querySelectorAll('.m:not(.in)').length, n=a.querySelector('.n');
+      n.textContent=left||''; n.classList.toggle('zero',!left);
+    });
+  }
+  function tick(){
+    queued=false;
+    var vh=window.innerHeight;
+    bar.classList.toggle('chat',app.getBoundingClientRect().top<vh*0.35);
+    if(motion){
+      thinks.forEach(function(t){tickThink(t,vh)});
+      for(var i=0;i<msgs.length;i++){
+        var m=msgs[i]; if(m.classList.contains('in')) continue;
+        if(i>0&&!msgs[i-1].classList.contains('in')) break;
+        var r=m.getBoundingClientRect();
+        var passed=r.bottom<vh*0.35;
+        if(passed||(r.top<vh*0.88&&gate(m,i,vh))){ reveal(m,passed); if(m.classList.contains('think')) tickThink(m,vh); }
+        else break;
+      }
+    }
+    status();
+  }
+  var queued=false;
+  function schedule(){ if(!queued){queued=true; requestAnimationFrame(tick);} }
+  window.addEventListener('scroll',schedule,{passive:true});
+  window.addEventListener('resize',schedule);
+  /* tapping Approve is the person making the call */
+  document.querySelectorAll('.okb').forEach(function(btn){
+    btn.addEventListener('click',function(){
+      var card=btn.closest('.m.agent');
+      var o=document.querySelector('.m.owner[data-for="'+card.id+'"]');
+      if(!card.classList.contains('in')) reveal(card,true);
+      if(!card.classList.contains('done')){card.classList.remove('typing');card.classList.add('done');}
+      if(o&&!o.classList.contains('in')) reveal(o,false); else approve(card,false);
+      schedule();
+    });
+  });
+  tick();
+  window.addEventListener('load',schedule);
+  /* safety net: if anything ever stalls, a slow interval keeps the thread honest */
+  setInterval(schedule,700);
+})();
+</script>
+</body>
+</html>
