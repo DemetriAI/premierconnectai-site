@@ -400,7 +400,7 @@
       if (!alive) return;
       var width = Math.max(1, container.clientWidth);
       var height = Math.max(1, container.clientHeight);
-      var cap = window.innerWidth < 768 ? 1 : 1.5;
+      var cap = 1.5; // ponytail: phones get 1.5 too (crisper threads); drop phones to 1 if low-end devices stutter
       var baseDpr = Math.min(window.devicePixelRatio || 1, cap);
       var longest = Math.max(width, height) * baseDpr;
       var dpr = longest > MAX_RENDER_DIM ? (baseDpr * MAX_RENDER_DIM) / longest : baseDpr;

@@ -145,7 +145,7 @@ h1,h2,h3{font-family:var(--disp);letter-spacing:-.035em;line-height:.98;margin:0
   .anim .hero-end{position:absolute;left:0;right:0;bottom:0;z-index:4;padding:56px var(--pad) max(26px,env(safe-area-inset-bottom));background:linear-gradient(transparent,rgba(7,9,15,.92) 34%)}
   .anim .hero-end .sub{margin-top:0}
   html:not(.anim) .chat{margin-top:40px}
-  .scrollhint{display:none}
+  .scrollhint{bottom:14px}
 }
 
 /* SECTIONS ------------------------------------------------------- */
@@ -248,7 +248,7 @@ html:not(.anim) .orb{display:none}
 .faq{background:var(--white);padding:clamp(80px,10vw,130px) 0;border-top:1px solid var(--line)}
 .faq .grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(24px,5vw,80px)}
 details{border-bottom:1px solid var(--line)}
-summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:20px;padding:22px 0;font:700 clamp(18px,1.6vw,22px)/1.3 var(--disp);letter-spacing:-.01em}
+summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:22px 0;font:700 clamp(18px,1.6vw,22px)/1.3 var(--disp);letter-spacing:-.01em}
 summary::-webkit-details-marker{display:none}
 summary::after{content:"+";font:400 28px/1 var(--body);color:var(--orange-ink);transition:transform .25s}
 details[open] summary::after{transform:rotate(45deg)}
@@ -275,12 +275,13 @@ html:not(.anim) .think{display:none}
 
 /* v4: React Bits effects */
 .hero .threads{position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.85}
-.hero .copy,.hero .chat,.hero .scrollhint{position:relative;z-index:1}
+.hero .copy,.hero .chat{position:relative;z-index:1}
 .engines{background:var(--night);color:#eef2f8;padding:clamp(28px,4vw,48px) 0;border-top:1px solid rgba(255,255,255,.06);border-bottom:1px solid rgba(255,255,255,.06);overflow:hidden}
 .engines .sv-static{font:800 clamp(28px,4vw,56px)/1.1 var(--disp);letter-spacing:-.03em;padding:0 var(--pad);margin:0;color:#eef2f8}
 .engines .sv-copy{font-family:var(--disp);font-weight:800;letter-spacing:-.035em;font-size:clamp(40px,6vw,84px)}
-.engines .sv-parallax:nth-child(2) .sv-copy{color:transparent;-webkit-text-stroke:1.5px var(--orange)}
+.engines .sv-parallax:nth-child(2) .sv-copy{color:var(--night);-webkit-text-fill-color:var(--night);-webkit-text-stroke:3px var(--orange);paint-order:stroke fill;letter-spacing:-.005em}/* fill paints over the inner half of the stroke, hiding the variable font's overlapping contours */
 .split-line{padding-bottom:.06em}
+.built .eyebrow{color:var(--orange)}
 .built{background:var(--night);color:#eef2f8}
 .built .lede{color:#b9c2d0}
 .sys{background:#0d1220;border-color:rgba(255,255,255,.08);color:#eef2f8;box-shadow:0 30px 70px -40px rgba(0,0,0,.8)}
@@ -605,9 +606,11 @@ html:not(.anim) .think{display:none}
   var track=document.getElementById('track'),pBase=document.getElementById('pBase'),pLit=document.getElementById('pLit'),orb=document.getElementById('orb');
   var sts=gsap.utils.toArray('.st');
   function buildPath(){
-    var tr=track.getBoundingClientRect(),pts=sts.map(function(s,i){var r=s.getBoundingClientRect();var leftSide=i%2===0,rail=innerWidth<=900;return {x:rail?11+2*(i%2):leftSide?(r.right-tr.left)+14:(r.left-tr.left)-14,y:(r.top-tr.top)+r.height/2};}); // phone: one rail down the left gutter (2px sway keeps the gradient's bounding box non-zero, or the lit stroke vanishes)
+    var rail=innerWidth<=900;
+    var tr=track.getBoundingClientRect(),pts=sts.map(function(s,i){var r=s.getBoundingClientRect();var leftSide=i%2===0;return {x:rail?11+2*(i%2):leftSide?(r.right-tr.left):(r.left-tr.left),y:(r.top-tr.top)+r.height/2,s:leftSide?1:-1};}); // phone: one rail down the left gutter (2px sway keeps the gradient's bounding box non-zero, or the lit stroke vanishes)
     var d='M'+pts[0].x+','+pts[0].y;
-    for(var i=1;i<pts.length;i++){var a=pts[i-1],b=pts[i],my=(a.y+b.y)/2;d+=' C'+a.x+','+my+' '+b.x+','+my+' '+b.x+','+b.y;}
+    // desktop: the line leaves each card's inner edge sideways and snakes into the next one, so the lead visibly docks at every station
+    for(var i=1;i<pts.length;i++){var a=pts[i-1],b=pts[i],my=(a.y+b.y)/2,k=90;d+=rail?' C'+a.x+','+my+' '+b.x+','+my+' '+b.x+','+b.y:' C'+(a.x+k*a.s)+','+a.y+' '+(b.x+k*b.s)+','+b.y+' '+b.x+','+b.y;}
     pBase.setAttribute('d',d);pLit.setAttribute('d',d);
     var L=pLit.getTotalLength();pLit.style.strokeDasharray=L;return L;
   }
@@ -616,7 +619,7 @@ html:not(.anim) .think{display:none}
   function drawAgents(p){ // pure function of progress p (0..1)
     pLit.style.strokeDashoffset=L*(1-p);
     var pt=pLit.getPointAtLength(L*p);orb.style.transform='translate('+pt.x+'px,'+pt.y+'px)';
-    var idx=Math.min(3,Math.floor(p*4.0001));
+    var idx=Math.min(3,Math.floor(p*3+.02)); // a station lights when the orb reaches it (stations sit at 0, 1/3, 2/3, 1 of the path)
     sts.forEach(function(s,i){s.classList.toggle('on',i<=idx);});
     var mins=Math.round(p*47);clk.textContent='2:'+String(mins).padStart(2,'0');
     gsap.set('.st .ok',{autoAlpha:p>.38?1:0,y:p>.38?0:6});
@@ -639,7 +642,7 @@ html:not(.anim) .think{display:none}
 
   /* the five systems: rise in, tilt toward the pointer */
   gsap.from('.sys',{y:80,autoAlpha:0,stagger:.09,duration:1.1,ease:'expo.out',scrollTrigger:{trigger:'.bento',start:'top 82%'}});
-  gsap.from('#cnt',{textContent:0,snap:{textContent:1},duration:1.8,ease:'power3.out',scrollTrigger:{trigger:'#cnt',start:'top 90%'}});
+  gsap.from('#cnt',{textContent:0,snap:{textContent:1},duration:1.8,ease:'power3.out',scrollTrigger:{trigger:'#cnt',start:'top bottom'}});
 
   /* AUDIT: cards stack -------------------------------------------- */
   var cards=gsap.utils.toArray('.audit .card');
