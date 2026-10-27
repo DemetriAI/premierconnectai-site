@@ -56,7 +56,7 @@ Cards:
 Quote: "I don't replace your team. I make them unstoppable."
 Attribution: Demetri Panagiotou, founder
 
-## Section 2b: What we've built (draft 2026-10-26, from Demetri's list; awaiting his yes)
+## Section 2b: What we've built (approved by Demetri 2026-10-26)
 Eyebrow: Built and running in our own business
 
 Headline: We run everything we sell.
