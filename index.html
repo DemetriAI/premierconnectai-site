@@ -274,11 +274,12 @@ details p{margin:0 0 22px;color:var(--muted);max-width:40em}
 .close .glow.b{right:auto;left:-14vw;top:-20vw;bottom:auto}
 footer{background:var(--night);color:#8c97a8;border-top:1px solid rgba(255,255,255,.08);padding:28px var(--pad);display:flex;flex-wrap:wrap;gap:12px 24px;justify-content:space-between;font-size:14px}
 footer a{color:#cfd6e2}
+.mtog{background:none;border:0;padding:12px 0;font:inherit;color:#cfd6e2;text-decoration:underline;cursor:pointer}
 
 /* Final states are the defaults (no JS, reduced motion). JS adds .anim and drives from there. */
 .rm .scrollhint{display:none}
 html:not(.anim) .think{display:none}
-@media (prefers-reduced-motion:reduce){.scrollhint i::after,.think i,.inp .caret{animation:none}}
+.rm .scrollhint i::after,.rm .think i,.rm .inp .caret{animation:none}
 
 /* v4: React Bits effects */
 .hero .threads{position:absolute;inset:0;z-index:0;pointer-events:none;opacity:.85}
@@ -305,6 +306,9 @@ html:not(.anim) .think{display:none}
 </style>
 <link rel="stylesheet" href="/assets/fx/scroll-velocity.css">
 <link rel="stylesheet" href="/assets/fx/magic-bento.css">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
@@ -505,7 +509,7 @@ html:not(.anim) .think{display:none}
 <footer>
   <span>PremierConnect AI · Austin, Texas · <a href="mailto:contact@premierconnectai.com">contact@premierconnectai.com</a></span>
   <span><a href="/privacy/">Privacy Policy</a> · <a href="/terms/">Terms &amp; Conditions</a></span>
-  <span>© 2026 PremierConnect AI</span>
+  <span>© 2026 PremierConnect AI · <button type="button" id="motionToggle" class="mtog">Turn motion off</button></span>
 </footer>
 
 <script src="/assets/vendor/gsap.min.js"></script>
@@ -520,8 +524,10 @@ html:not(.anim) .think{display:none}
 <script>
 (function(){
   var html=document.documentElement;
-  // ?motion=1 forces motion for testing on machines with animations switched off
-  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches&&!/[?&]motion=1/.test(location.search);
+  // ponytail: many Windows PCs ship with animation effects off, and obeying that alone froze the page. Motion stays on; the footer switch (or ?motion=0) turns it off.
+  var off=/[?&]motion=0/.test(location.search);try{off=off||localStorage.getItem('pc-motion')==='off'}catch(e){}
+  var reduce=off;
+  var mt=document.getElementById('motionToggle');if(mt){mt.textContent=off?'Turn motion on':'Turn motion off';mt.onclick=function(){try{localStorage.setItem('pc-motion',off?'on':'off')}catch(e){}location.href=location.pathname+(off?'?motion=1':'?motion=0')}}
   var top=document.getElementById('top');
   var heroEl=document.getElementById('hero');
   // header: light treatment once the dark hero is behind us (works with or without motion)
