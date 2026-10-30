@@ -11,3 +11,11 @@ h2{font-size:1.15rem;margin:32px 0 6px}
 a{color:var(--blue)}
 a:focus-visible{outline:2px solid var(--blue);outline-offset:2px}
 footer{margin-top:48px;padding-top:18px;padding-bottom:40px;border-top:1px solid var(--line);color:var(--muted);font-size:.9rem}
+nav{display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:14px;font-size:.92rem}
+nav a{text-decoration:none}nav a[aria-current]{color:var(--ink);font-weight:600}
+h3{font-size:1rem;margin:22px 0 4px}
+li{margin:6px 0}
+table{border-collapse:collapse;width:100%;margin:20px 0}th,td{text-align:left;padding:10px 8px;border-bottom:1px solid var(--line)}
+.cta{margin:40px 0 0;display:flex;flex-wrap:wrap;align-items:center;gap:12px 18px}
+.btn{display:inline-block;background:var(--blue);color:#fff;padding:12px 20px;border-radius:8px;font-weight:600;text-decoration:none}
+@media (prefers-color-scheme:dark){.btn{color:#0d1117}}
