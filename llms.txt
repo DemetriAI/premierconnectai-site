@@ -13,6 +13,13 @@
 ## Systems we built and run
 - Email outreach agent, AI content team, AEO and GEO audit agent, live SMS agent, custom CRM.
 
+## Pages
+- AEO and GEO: https://premierconnectai.com/aeo-geo/
+- AI agent teams: https://premierconnectai.com/ai-agents/
+- Pricing: https://premierconnectai.com/pricing/
+- Our own AI visibility, measured in public: https://premierconnectai.com/our-ai-visibility/
+- How to choose an AI visibility firm: https://premierconnectai.com/guides/how-to-choose-an-ai-visibility-firm/
+
 ## Links
 - Free AI visibility scan: https://foundusingai.premierconnectai.com/
 - Book a 60-minute call: https://calendar.app.google/CBG9o7r99zyKZ2Dj9
