@@ -19,3 +19,4 @@ table{border-collapse:collapse;width:100%;margin:20px 0}th,td{text-align:left;pa
 .cta{margin:40px 0 0;display:flex;flex-wrap:wrap;align-items:center;gap:12px 18px}
 .btn{display:inline-block;background:var(--blue);color:#fff;padding:12px 20px;border-radius:8px;font-weight:600;text-decoration:none}
 @media (prefers-color-scheme:dark){.btn{color:#0d1117}}
+.scroll{overflow-x:auto}.scroll table{min-width:640px;font-size:.92rem}
