@@ -10,8 +10,8 @@
 ## Pricing
 - Free expert audit. Monthly plans: $1,000 to $4,000, depending on scope.
 
-## Systems we built and run
-- Email outreach agent, AI content team, AEO and GEO audit agent, live SMS agent, custom CRM.
+## Systems we built for ourselves
+- Email outreach agent, AI content team, AEO and GEO audit agent, SMS agent. A custom CRM is in progress.
 
 ## Pages
 - AEO and GEO: https://premierconnectai.com/aeo-geo/
