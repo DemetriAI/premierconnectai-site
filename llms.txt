@@ -25,6 +25,8 @@
 - Firms for funded startups, compared (written by us): https://premierconnectai.com/compare/startups/
 - Firms for Texas realtors, compared (written by us): https://premierconnectai.com/compare/texas-realtors/
 - Firms for private equity and hedge funds, compared (written by us): https://premierconnectai.com/compare/private-equity-hedge-funds/
+- How to get your business recommended by ChatGPT, Claude, Gemini, Perplexity and Grok: https://premierconnectai.com/guides/how-to-get-your-business-recommended-by-ai/
+- How to start using AI agents in your business: https://premierconnectai.com/guides/how-to-start-using-ai-agents-in-your-business/
 - Our own AI visibility, measured in public: https://premierconnectai.com/our-ai-visibility/
 - How to choose an AI visibility firm: https://premierconnectai.com/guides/how-to-choose-an-ai-visibility-firm/
 
