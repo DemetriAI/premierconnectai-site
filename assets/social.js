@@ -19,6 +19,11 @@
     '.pcs-row b{font-weight:500}' +
     '.pcs-a{display:inline-flex;align-items:center;gap:6px;color:inherit;text-decoration:none}' +
     '.pcs-a:hover{text-decoration:underline}' +
+    '.pcs-near{position:relative;margin-top:28px;display:flex;flex-direction:column;gap:12px;font-size:15px;opacity:.95}' +
+    'section.close .pcs-near{align-items:center;text-align:center}' +
+    '.pcs-near div{display:flex;flex-wrap:wrap;gap:10px}' +
+    '.pcs-pill{padding:9px 14px;border:1px solid currentColor;border-color:color-mix(in srgb,currentColor 35%,transparent);border-radius:999px;font-weight:500}' +
+    '.pcs-pill:hover{text-decoration:none;border-color:currentColor}' +
     '.pcs-btn{position:fixed;right:18px;bottom:18px;z-index:9998;width:56px;height:56px;border-radius:50%;border:0;cursor:pointer;background:#0b5fff;color:#fff;box-shadow:0 8px 24px rgba(10,30,80,.28);display:flex;align-items:center;justify-content:center}' +
     '.pcs-btn:focus-visible,.pcs-card a:focus-visible,.pcs-x:focus-visible{outline:3px solid #9cc0ff;outline-offset:2px}' +
     '.pcs-card{position:fixed;right:18px;bottom:86px;z-index:9999;width:min(320px,calc(100vw - 36px));background:#fff;color:#14181f;border-radius:16px;box-shadow:0 18px 48px rgba(10,30,80,.25);padding:16px 16px 14px;font:15px/1.45 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;opacity:0;transform:translateY(8px);pointer-events:none;transition:opacity .2s,transform .2s}' +
@@ -41,6 +46,16 @@
     row.className = 'pcs-row';
     row.innerHTML = '<b>Follow along:</b>' + icons('pcs-a');
     footers[i].appendChild(row);
+  }
+
+  // Under the page's closing call to action: the homepage's "Book a 60-minute call" line, else the last .cta.
+  var ctas = document.querySelectorAll('section.close .talk, main .cta');
+  var cta = document.querySelector('section.close .talk') || ctas[ctas.length - 1];
+  if (cta) {
+    var near = document.createElement('div');
+    near.className = 'pcs-near';
+    near.innerHTML = '<span>Want to learn more? Follow along:</span><div>' + icons('pcs-a pcs-pill') + '</div>';
+    cta.parentNode.insertBefore(near, cta.nextSibling);
   }
 
   // Chat bubble
