@@ -28,7 +28,9 @@
     '.pcs-card .pcs-a{display:flex;padding:10px 12px;border:1px solid #e3e6eb;border-radius:10px;margin-top:8px;font-weight:500}' +
     '.pcs-card .pcs-a:hover{background:#f3f6fb;text-decoration:none}' +
     '.pcs-x{position:absolute;top:8px;right:8px;width:32px;height:32px;border:0;background:none;font-size:22px;line-height:1;color:#5b6472;cursor:pointer;border-radius:8px}' +
-    '@media (max-width:700px){.pcs-row{padding-right:64px;box-sizing:border-box}}' +
+    '@media (max-width:700px){.pcs-row{padding-right:64px;box-sizing:border-box}' +
+      // FoundusingAI on a phone: the scan button owns the bottom corner, so the bubble goes top right.
+      '.pcs-top.pcs-btn{top:40px;bottom:auto;right:12px;width:44px;height:44px}.pcs-top.pcs-card{top:92px;bottom:auto;right:12px}}' +
     '@media print{.pcs-btn,.pcs-card{display:none}}';
   document.head.appendChild(css);
 
@@ -57,6 +59,7 @@
   btn.setAttribute('aria-label', 'Follow PremierConnect AI on social');
   btn.setAttribute('aria-expanded', 'false');
   btn.innerHTML = '<svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor" aria-hidden="true"><path d="M12 3C6.5 3 2 6.9 2 11.7c0 2.4 1.1 4.6 3 6.2L4 22l4.6-2.4c1.1.3 2.2.5 3.4.5 5.5 0 10-3.9 10-8.7S17.5 3 12 3z"/></svg>';
+  if (location.hostname.indexOf('foundusingai') === 0) { card.classList.add('pcs-top'); btn.classList.add('pcs-top'); }
   document.body.appendChild(card);
   document.body.appendChild(btn);
 
